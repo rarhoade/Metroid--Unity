@@ -26,7 +26,7 @@ public class PlayerState : MonoBehaviour {
             isStanding = false;
         }
 
-        if(!isStanding && (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.UpArrow)))
+        if(!isStanding && (Input.GetKeyDown(KeyCode.Z) || Input.GetKeyDown(KeyCode.UpArrow)))
         {
             standing.SetActive(true);
             morphed.SetActive(false);
