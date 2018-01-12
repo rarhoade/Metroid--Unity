@@ -6,10 +6,11 @@ public class PlayerState : MonoBehaviour {
 
     PlayerInventory playerInventory;
 
-    public GameObject standing;
-    public GameObject morphed;
+    public GameObject Standing;
+    public GameObject Morphed;
+    public float bufferLookUp = 0.1f;
 
-    bool isStanding = false;
+    bool standing = true;
 
     private void Awake()
     {
@@ -18,19 +19,30 @@ public class PlayerState : MonoBehaviour {
 
     // Update is called once per frame
     //TODO update states so that you can only morphball in mid air
-    void Update () {
-		if(isStanding && Input.GetKeyDown(KeyCode.DownArrow) && playerInventory.HasMorphBall())
+    void LateUpdate () {
+		if(standing && Input.GetKeyDown(KeyCode.DownArrow) && playerInventory.HasMorphBall())
         {
-            standing.SetActive(false);
-            morphed.SetActive(true);
-            isStanding = false;
+            Standing.SetActive(false);
+            Morphed.SetActive(true);
+            standing = false;
         }
 
-        if(!isStanding && (Input.GetKeyDown(KeyCode.Z) || Input.GetKeyDown(KeyCode.UpArrow)))
+        if(!standing && Input.GetKeyDown(KeyCode.UpArrow))
         {
-            standing.SetActive(true);
-            morphed.SetActive(false);
-            isStanding = true;
+            Standing.SetActive(true);
+            Morphed.SetActive(false);
+            StartCoroutine(SetStanding());
         }
 	}
+
+    public bool isStanding()
+    {
+        return standing;
+    }
+
+    IEnumerator SetStanding()
+    {
+        yield return new WaitForSeconds(bufferLookUp);
+        standing = true;
+    }
 }

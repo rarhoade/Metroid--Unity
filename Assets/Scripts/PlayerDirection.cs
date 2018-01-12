@@ -12,9 +12,15 @@ public class PlayerDirection : MonoBehaviour {
     bool lookingUp = false;
     bool facingRight = true;
 
-	
-	// Update is called once per frame
-	void Update () {
+    private PlayerState playerState;
+
+    private void Start()
+    {
+        playerState = this.GetComponent<PlayerState>();
+    }
+
+    // Update is called once per frame
+    void Update () {
         // Horizontal
         float horizontalAxis = Input.GetAxis("Horizontal");
         if(facingRight && horizontalAxis < 0)
@@ -30,12 +36,12 @@ public class PlayerDirection : MonoBehaviour {
 
         // Vertical
         bool holdingUp = Input.GetKey(KeyCode.UpArrow);
-        if(lookingUp && !holdingUp)
+        if (lookingUp && !holdingUp && playerState.isStanding())
         {
             lookingUp = false;
             spriteRenderer.sprite = spriteLookingForward;
         }
-        else if(!lookingUp && holdingUp)
+        else if(!lookingUp && holdingUp && playerState.isStanding())
         {
             lookingUp = true;
             spriteRenderer.sprite = spriteLookingUpward;
