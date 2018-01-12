@@ -8,6 +8,7 @@ public class PlayerJump : MonoBehaviour {
     Collider col;
 
     public float jumpPower = 12;
+    public float sink = -10;
 
 	// Use this for initialization
 	void Awake () {
@@ -26,6 +27,13 @@ public class PlayerJump : MonoBehaviour {
         }
 
         rigid.velocity = newVelocity;
+        
+        newVelocity = rigid.velocity;
+        newVelocity.y = sink;
+        if(!Input.GetKey(KeyCode.Z) && !IsGrounded())
+        {
+            rigid.velocity = newVelocity;
+        }
     }
 
     bool IsGrounded()
