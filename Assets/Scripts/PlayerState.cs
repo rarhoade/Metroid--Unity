@@ -10,7 +10,7 @@ public class PlayerState : MonoBehaviour {
     public GameObject Morphed;
     public float bufferLookUp = 0.1f;
 
-    bool standing = true;
+    public bool standing = true;
 
     private void Awake()
     {

@@ -11,6 +11,7 @@ public class PlayerDirection : MonoBehaviour {
 
     bool lookingUp = false;
     bool facingRight = true;
+    bool firstTime = true;
 
     private PlayerState playerState;
 
@@ -20,7 +21,8 @@ public class PlayerDirection : MonoBehaviour {
     }
 
     // Update is called once per frame
-    void Update () {
+    void Update ()
+    {
         // Horizontal
         float horizontalAxis = Input.GetAxis("Horizontal");
         if(facingRight && horizontalAxis < 0)
