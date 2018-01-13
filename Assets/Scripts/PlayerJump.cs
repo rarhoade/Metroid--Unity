@@ -9,6 +9,7 @@ public class PlayerJump : MonoBehaviour {
 
     public float jumpPower = 12;
     public float sink = -10;
+    public float boxSizes = 5;
 
 	// Use this for initialization
 	void Awake () {
@@ -33,6 +34,17 @@ public class PlayerJump : MonoBehaviour {
         if(!Input.GetKey(KeyCode.Z) && !IsGrounded())
         {
             rigid.velocity = newVelocity;
+        }
+    }
+
+    private void FixedUpdate()
+    {
+        if (!IsGrounded())
+        { 
+            if(Physics.Raycast(transform.position, Vector3.left, 0.5f) || Physics.Raycast(transform.position, Vector3.right, 0.5f))
+            {
+                rigid.velocity = new Vector3(0, rigid.velocity.y, 0);
+            }
         }
     }
 
