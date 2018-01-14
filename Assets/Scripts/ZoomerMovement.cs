@@ -18,6 +18,7 @@ public class ZoomerMovement : MonoBehaviour {
 	private Vector3 actingVelocity;
 	private Vector3 positionCheck;
 	private Transform zoomPos;
+	private int playerLayer = 1 << 8;
 
 	// Use this for initialization
 	void Start () {
@@ -76,7 +77,7 @@ public class ZoomerMovement : MonoBehaviour {
 			positionCheck = Vector3.down;
 		}
 		Debug.Log (transform.position);
-		bool rayCheck = Physics.Raycast (transform.position, positionCheck, 0.75f);
+		bool rayCheck = Physics.Raycast (transform.position, positionCheck, 0.75f, ~playerLayer);
 		Debug.DrawRay (transform.position, positionCheck * 0.75f, Color.white);
 		if(!rayCheck)
 		{
@@ -101,7 +102,7 @@ public class ZoomerMovement : MonoBehaviour {
 		else if (currentFace == Direction.Up) {
 			positionCheck = Vector3.right;
 		}
-		bool wallCheck = Physics.Raycast (transform.position, positionCheck, 0.6f);
+		bool wallCheck = Physics.Raycast (transform.position, positionCheck, 0.6f, ~playerLayer);
 		Debug.DrawRay (transform.position, positionCheck * 0.6f, Color.red);
 		if (wallCheck) {
 			changeFaceWall ();
