@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 65683746502080498}
   m_Layer: 0
   m_Name: Missle
-  m_TagString: Undefined
+  m_TagString: Missle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
