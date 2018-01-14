@@ -105,9 +105,10 @@ public class ZoomerMovement : MonoBehaviour {
 		else if (currentFace == Direction.Up) {
 			positionCheck = Vector3.right;
 		}
-		bool wallCheck = Physics.Raycast (transform.position, positionCheck, 0.6f, ~playerLayer);
+		RaycastHit hit;
+		bool wallCheck = Physics.Raycast (transform.position, positionCheck, out hit, 0.6f, ~playerLayer);
 		Debug.DrawRay (transform.position, positionCheck * 0.6f, Color.red);
-		if (wallCheck) {
+		if ((wallCheck && hit.collider.gameObject.name == "Tile_WALL") || (wallCheck && hit.collider.gameObject.name == "Tile_NONE")) {
 			changeFaceWall ();
 			shiftSprite ();
 		}
