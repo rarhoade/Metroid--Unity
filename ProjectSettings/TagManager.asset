@@ -7,7 +7,7 @@ TagManager:
   - MorphBall
   - LongShot
   - Missle
-  - Undefined
+  - Energy
   layers:
   - Default
   - TransparentFX
