@@ -7,10 +7,17 @@ public class PlayerInventory : MonoBehaviour {
 
     public Text missleCount;
 
+	private UnitHealth instance;
+
     public bool hasMorphBall = false;
     public bool hasLongShot = false;
 
     private int missles;
+
+
+	private void Awake(){
+		instance = GetComponent<UnitHealth> ();
+	}
 
     private void Start()
     {
@@ -28,7 +35,11 @@ public class PlayerInventory : MonoBehaviour {
 		} else if (other.tag == "Missle") {
 			Destroy (other.gameObject);
 			addMissles ();
+		} else if (other.tag == "Energy") {
+			Destroy (other.gameObject);
+			instance.AddHealthFromPickup ();
 		}
+
     }
 
     public void addMissles()

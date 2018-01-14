@@ -83,5 +83,15 @@ public class UnitHealth : MonoBehaviour {
             s[i].color = new Color(c.r, c.g, c.b, alpha);
         }
     }
+
+	public void AddHealthFromPickup()
+	{
+		
+		healthTotal += 3;
+		if (energy != null)
+		{
+			energy.text = healthTotal.ToString();
+		}
+	}
     
 }
