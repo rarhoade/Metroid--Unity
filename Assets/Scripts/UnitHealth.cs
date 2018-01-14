@@ -1,8 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UnitHealth : MonoBehaviour {
+
+    public Text energy;
 
     public int healthTotal = 30;
     public bool invulnerability = false;
@@ -22,6 +25,10 @@ public class UnitHealth : MonoBehaviour {
         if (!invulnerability)
         {
             healthTotal -= damage;
+            if (energy != null)
+            {
+                energy.text = healthTotal.ToString();
+            }
             StartCoroutine(IFrames());
         }
         if (healthTotal <= 0)
