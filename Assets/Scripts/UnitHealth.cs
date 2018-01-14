@@ -24,13 +24,23 @@ public class UnitHealth : MonoBehaviour {
     {
         if (!invulnerability)
         {
+            Debug.Log("Health: " + healthTotal.ToString());
+            Debug.Log("Damage: " + damage.ToString());
+
             healthTotal -= damage;
             if (energy != null)
             {
                 energy.text = healthTotal.ToString();
             }
             //TODO implement knockback force (zero out velocity then add force)
-            StartCoroutine(IFrames());
+            if (blink > 0)
+            {
+                StartCoroutine(IFrames());
+            }
+            else
+            {
+                StartCoroutine(FlashDamage());
+            }
         }
         if (healthTotal <= 0)
         {
@@ -50,6 +60,19 @@ public class UnitHealth : MonoBehaviour {
             yield return new WaitForSeconds(blink);
         }
         Physics.IgnoreLayerCollision(this.gameObject.layer, 10, false);
+        yield break;
+    }
+
+    IEnumerator FlashDamage()
+    {
+        SpriteRenderer s = gameObject.GetComponent<SpriteRenderer>();
+
+        Color c = new Color(s.color.r, s.color.g, s.color.b);
+        s.color = new Color(1, 0, 0, 1);
+        yield return new WaitForSeconds(0.2f);
+        s.color = new Color(1, 1, 1);
+        yield return new WaitForEndOfFrame();
+        yield break;
     }
 
     private void SetSpritesAlpha(SpriteRenderer[] s, float alpha)
@@ -60,4 +83,5 @@ public class UnitHealth : MonoBehaviour {
             s[i].color = new Color(c.r, c.g, c.b, alpha);
         }
     }
+    
 }

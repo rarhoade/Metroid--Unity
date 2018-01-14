@@ -85,9 +85,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteRend: {fileID: 0}
-  currentFace: 0
-  zoomerSpeed: 5
-  rigid: {fileID: 0}
+  currentFace: 1
+  zoomerSpeed: 1.5
+  rigid: {fileID: 54754329916864934}
   zoomerSprites:
   - {fileID: 21300000, guid: 8cbd80b6603415540bb106d47271a448, type: 3}
   - {fileID: 21300004, guid: 8cbd80b6603415540bb106d47271a448, type: 3}
@@ -105,10 +105,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   energy: {fileID: 0}
-  healthTotal: 30
+  healthTotal: 24
   invulnerability: 0
-  numberOfBlinks: 2
-  blink: 0.4
+  numberOfBlinks: 0
+  blink: 0
 --- !u!135 &135139554933043672
 SphereCollider:
   m_ObjectHideFlags: 1
@@ -116,7 +116,7 @@ SphereCollider:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1617841020353158}
   m_Material: {fileID: 13400000, guid: ccf0ddc175614d84f98e1555d15a6fda, type: 2}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
@@ -155,7 +155,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 8cbd80b6603415540bb106d47271a448, type: 3}
+  m_Sprite: {fileID: 21300004, guid: 8cbd80b6603415540bb106d47271a448, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

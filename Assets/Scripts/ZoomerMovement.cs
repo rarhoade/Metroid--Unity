@@ -76,7 +76,6 @@ public class ZoomerMovement : MonoBehaviour {
 		else if (currentFace == Direction.Up) {
 			positionCheck = Vector3.down;
 		}
-		Debug.Log (transform.position);
         bool rayCheck = Physics.Raycast(transform.position, positionCheck, 0.75f, ~playerLayer);
         //RAH HERE
         RaycastHit hit;
