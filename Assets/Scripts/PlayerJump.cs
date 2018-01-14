@@ -6,25 +6,39 @@ public class PlayerJump : MonoBehaviour {
 
     Rigidbody rigid;
     Collider col;
+    SpriteRenderer spriteR;
+    public Sprite stillJumpRight;
+    public Sprite stillJumpLeft;
+    public Sprite standLeft;
+    public Sprite standRight;
 
     public float jumpPower = 12;
     public float sink = -10;
     public float boxSizes = 5;
+    bool stillJumped = false;
+    private PlayerDirection instance;
 
 	// Use this for initialization
 	void Awake () {
         rigid = GetComponentInParent<Rigidbody>();
         col = this.GetComponent<Collider>();
+        spriteR = GetComponentInParent<SpriteRenderer>();
+        instance = GetComponentInParent<PlayerDirection>();
 	}
 	
 	// Update is called once per frame
 	void Update () {
         Vector3 newVelocity = rigid.velocity;
-
+        
         //Vertical
         if (Input.GetKeyDown(KeyCode.Z) && IsGrounded())
         {
             newVelocity.y = jumpPower;
+            if (rigid.velocity.x == 0)
+            {
+                stillJumped = true;
+                spriteR.sprite = stillJumpRight;
+            }
         }
 
         rigid.velocity = newVelocity;
@@ -41,9 +55,27 @@ public class PlayerJump : MonoBehaviour {
     {
         if (!IsGrounded())
         { 
-            if(Physics.Raycast(transform.position, Vector3.left, 0.5f) || Physics.Raycast(transform.position, Vector3.right, 0.5f))
+            if(Physics.Raycast(transform.position, Vector3.left, 0.5f))
             {
-                rigid.velocity = new Vector3(0, rigid.velocity.y, 0);
+                if(Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A))
+                {
+                    rigid.velocity = new Vector3(0, rigid.velocity.y, 0);
+                }
+            }
+            else if(Physics.Raycast(transform.position, Vector3.right, 0.5f))
+            {
+                if(Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D))
+                {
+                    rigid.velocity = new Vector3(0, rigid.velocity.y, 0);
+                }
+            }
+        }
+        if (IsGrounded())
+        {
+            if (stillJumped)
+            {
+                stillJumped = false;
+                spriteR.sprite = standRight;
             }
         }
     }
@@ -54,11 +86,23 @@ public class PlayerJump : MonoBehaviour {
 
         float radius = col.bounds.extents.x - .05f;
 
-        float fullDistance = col.bounds.extents.y + 0.5f;
+        float fullDistance = col.bounds.extents.y + 0.05f;
 
         if (Physics.SphereCast(ray, radius, fullDistance))
             return true;
         else
             return false;
+    }
+
+    public bool IsStillJumped()
+    {
+        return stillJumped;
+    }
+
+    IEnumerator SetStillJumped()
+    {
+        yield return new WaitForSeconds(0.1f);
+        stillJumped = true; 
+        spriteR.sprite = stillJumpRight;
     }
 }

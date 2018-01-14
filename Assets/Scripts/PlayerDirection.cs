@@ -14,10 +14,12 @@ public class PlayerDirection : MonoBehaviour {
     bool firstTime = true;
 
     private PlayerState playerState;
+    private PlayerJump playerJump;
 
     private void Start()
     {
         playerState = this.GetComponent<PlayerState>();
+        playerJump = GetComponentInChildren<PlayerJump>();
     }
 
     // Update is called once per frame
@@ -41,12 +43,18 @@ public class PlayerDirection : MonoBehaviour {
         if (lookingUp && !holdingUp && playerState.isStanding())
         {
             lookingUp = false;
-            spriteRenderer.sprite = spriteLookingForward;
+            if (!playerJump.IsStillJumped())
+            {
+                spriteRenderer.sprite = spriteLookingForward;
+            }
         }
         else if(!lookingUp && holdingUp && playerState.isStanding())
         {
             lookingUp = true;
-            spriteRenderer.sprite = spriteLookingUpward;
+            if (!playerJump.IsStillJumped())
+            {
+                spriteRenderer.sprite = spriteLookingUpward;
+            }
         }
 	}
 
