@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - MorphBall
+  - LongShot
   layers:
   - Default
   - TransparentFX

@@ -5,8 +5,10 @@ using UnityEngine;
 public class PlayerWeapon : MonoBehaviour {
 
     PlayerDirection playerDirection;
+    PlayerInventory playerInventory;
 
     public GameObject bulletPrefab;
+    public GameObject longBulletPrefab;
 
     public Transform firingPositionForward;
     public Transform firingPositionUpward;
@@ -16,13 +18,22 @@ public class PlayerWeapon : MonoBehaviour {
 	// Use this for initialization
 	void Awake () {
         playerDirection = GetComponentInParent<PlayerDirection>();
+        playerInventory = GetComponentInParent<PlayerInventory>();
 	}
 	
 	// Update is called once per frame
 	void Update () {
         if (Input.GetKeyDown(KeyCode.X))
         {
-            GameObject bulletInstance = GameObject.Instantiate(bulletPrefab);
+            GameObject bulletInstance;
+            if (playerInventory.HasLongShot())
+            {
+                bulletInstance = GameObject.Instantiate(longBulletPrefab);
+            }
+            else
+            {
+                bulletInstance = GameObject.Instantiate(bulletPrefab);
+            }
 
             if (playerDirection.IsLookingUp())
             {
