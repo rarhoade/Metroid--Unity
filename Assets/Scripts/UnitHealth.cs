@@ -20,7 +20,7 @@ public class UnitHealth : MonoBehaviour {
         }
 	}
 
-    public void TakeDamage(int damage)
+    public void TakeDamage(int damage, float knockback)
     {
         if (!invulnerability)
         {
@@ -29,6 +29,7 @@ public class UnitHealth : MonoBehaviour {
             {
                 energy.text = healthTotal.ToString();
             }
+            //TODO implement knockback force (zero out velocity then add force)
             StartCoroutine(IFrames());
         }
         if (healthTotal <= 0)
