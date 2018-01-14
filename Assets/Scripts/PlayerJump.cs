@@ -76,19 +76,6 @@ public class PlayerJump : MonoBehaviour {
                 }
             }
         }
-        if (IsGrounded())
-        {
-            if (stillJumped)
-            {
-                stillJumped = false;
-                
-            }
-            else if (moveJumped)
-            {
-                moveJumped = false;
-            }
-            spriteR.sprite = standRight;
-        }
     }
 
     bool IsGrounded()
@@ -120,6 +107,7 @@ public class PlayerJump : MonoBehaviour {
         yield return new WaitForSeconds(0.1f);
         stillJumped = true; 
         spriteR.sprite = stillJumpRight;
+        StartCoroutine(Falling());
     }
 
     IEnumerator SetMoveJumped()
@@ -127,5 +115,22 @@ public class PlayerJump : MonoBehaviour {
         yield return new WaitForSeconds(0.1f);
         moveJumped = true;
         spriteR.sprite = moveJumpRight;
+        StartCoroutine(Falling());
+    }
+
+    IEnumerator Falling()
+    {
+        while(!IsGrounded()) {
+            yield return new WaitForEndOfFrame();
+        }
+        if (stillJumped)
+        {
+            stillJumped = false;
+        }
+        else if (moveJumped)
+        {
+            moveJumped = false;
+        }
+        spriteR.sprite = standRight;
     }
 }
