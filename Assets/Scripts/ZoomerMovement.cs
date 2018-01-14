@@ -77,8 +77,11 @@ public class ZoomerMovement : MonoBehaviour {
 			positionCheck = Vector3.down;
 		}
 		Debug.Log (transform.position);
-		bool rayCheck = Physics.Raycast (transform.position, positionCheck, 0.75f, ~playerLayer);
-		Debug.DrawRay (transform.position, positionCheck * 0.75f, Color.white);
+        bool rayCheck = Physics.Raycast(transform.position, positionCheck, 0.75f, ~playerLayer);
+        //RAH HERE
+        RaycastHit hit;
+        Physics.Raycast(transform.position, positionCheck, out hit, 0.75f);
+        Debug.DrawRay (transform.position, positionCheck * 0.75f, Color.white);
 		if(!rayCheck)
 		{
 			//if we detect no collision then we need to rotate and change currentFace

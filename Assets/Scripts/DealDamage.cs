@@ -6,9 +6,19 @@ public class DealDamage : MonoBehaviour {
     public int myDamage = 8;
     public float knockback = 10f;
 
+    private void OnTriggerEnter(Collider collision)
+    {
+        dealDamage(collision.gameObject);
+    }
+
     private void OnCollisionEnter(Collision collision)
     {
-        UnitHealth uh = collision.gameObject.GetComponent<UnitHealth>();
+        dealDamage(collision.gameObject);
+    }
+
+    private void dealDamage(GameObject go)
+    {
+        UnitHealth uh = go.GetComponent<UnitHealth>();
         if (uh != null)
         {
             uh.TakeDamage(myDamage, knockback);
