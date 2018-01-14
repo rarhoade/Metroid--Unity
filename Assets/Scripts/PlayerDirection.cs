@@ -4,17 +4,11 @@ using UnityEngine;
 
 public class PlayerDirection : MonoBehaviour {
 
-    public SpriteRenderer spriteRenderer;
-
-    public Sprite spriteLookingForward;
-    public Sprite spriteLookingUpward;
-
-    bool lookingUp = false;
-    bool facingRight = true;
-    bool firstTime = true;
-
     private PlayerState playerState;
     private PlayerJump playerJump;
+
+    private bool holdingUp = false;
+    private bool facingRight = true;
 
     private void Start()
     {
@@ -39,32 +33,16 @@ public class PlayerDirection : MonoBehaviour {
         }
 
         // Vertical
-        bool holdingUp = Input.GetKey(KeyCode.UpArrow);
-        if (lookingUp && !holdingUp && playerState.isStanding())
-        {
-            lookingUp = false;
-            if (!playerJump.IsStillJumped() && !playerJump.IsMoveJumped())
-            {
-                spriteRenderer.sprite = spriteLookingForward;
-            }
-        }
-        else if(!lookingUp && holdingUp && playerState.isStanding())
-        {
-            lookingUp = true;
-            if (!playerJump.IsStillJumped() && !playerJump.IsMoveJumped())
-            {
-                spriteRenderer.sprite = spriteLookingUpward;
-            }
-        }
+        holdingUp = Input.GetKey(KeyCode.UpArrow);
 	}
 
     public bool IsFacingRight()
     {
         return facingRight;
     }
-
-    public bool IsLookingUp()
+    
+    public bool IsHoldingUp()
     {
-        return lookingUp;
+        return holdingUp;
     }
 }

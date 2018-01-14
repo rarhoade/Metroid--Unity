@@ -3,10 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerWeapon : MonoBehaviour {
-
-    PlayerDirection playerDirection;
-    PlayerInventory playerInventory;
-
     public GameObject bulletPrefab;
     public GameObject longBulletPrefab;
 
@@ -15,15 +11,20 @@ public class PlayerWeapon : MonoBehaviour {
 
     public float firingSpeed = 10f;
 
-	// Use this for initialization
-	void Awake () {
+    private PlayerState playerState;
+    private PlayerDirection playerDirection;
+    private PlayerInventory playerInventory;
+
+    // Use this for initialization
+    void Awake () {
         playerDirection = GetComponentInParent<PlayerDirection>();
         playerInventory = GetComponentInParent<PlayerInventory>();
+        playerState = GetComponentInParent<PlayerState>();
 	}
 	
 	// Update is called once per frame
 	void Update () {
-        if (Input.GetKeyDown(KeyCode.X))
+        if (playerState.IsShooting())
         {
             GameObject bulletInstance;
             if (playerInventory.HasLongShot())
@@ -35,7 +36,7 @@ public class PlayerWeapon : MonoBehaviour {
                 bulletInstance = GameObject.Instantiate(bulletPrefab);
             }
 
-            if (playerDirection.IsLookingUp())
+            if (playerState.IsLookingUp())
             {
                 bulletInstance.transform.position = firingPositionUpward.position;
                 bulletInstance.GetComponent<Rigidbody>().velocity = Vector3.up * firingSpeed;

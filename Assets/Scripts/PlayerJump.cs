@@ -6,13 +6,6 @@ public class PlayerJump : MonoBehaviour {
 
     Rigidbody rigid;
     Collider col;
-    SpriteRenderer spriteR;
-    public Sprite stillJumpRight;
-    public Sprite stillJumpLeft;
-    public Sprite standLeft;
-    public Sprite standRight;
-    public Sprite moveJumpRight;
-    public Sprite moveJumpLeft;
 
     public float jumpPower = 12;
     public float sink = -10;
@@ -25,7 +18,6 @@ public class PlayerJump : MonoBehaviour {
 	void Awake () {
         rigid = GetComponentInParent<Rigidbody>();
         col = this.GetComponent<Collider>();
-        spriteR = GetComponentInParent<SpriteRenderer>();
         instance = GetComponentInParent<PlayerDirection>();
 	}
 	
@@ -78,7 +70,7 @@ public class PlayerJump : MonoBehaviour {
         }
     }
 
-    bool IsGrounded()
+    public bool IsGrounded()
     {
         Ray ray = new Ray(col.bounds.center, Vector3.down);
 
@@ -106,7 +98,6 @@ public class PlayerJump : MonoBehaviour {
     {
         yield return new WaitForSeconds(0.1f);
         stillJumped = true; 
-        spriteR.sprite = stillJumpRight;
         StartCoroutine(Falling());
     }
 
@@ -114,7 +105,6 @@ public class PlayerJump : MonoBehaviour {
     {
         yield return new WaitForSeconds(0.1f);
         moveJumped = true;
-        spriteR.sprite = moveJumpRight;
         StartCoroutine(Falling());
     }
 
@@ -131,6 +121,5 @@ public class PlayerJump : MonoBehaviour {
         {
             moveJumped = false;
         }
-        spriteR.sprite = standRight;
     }
 }

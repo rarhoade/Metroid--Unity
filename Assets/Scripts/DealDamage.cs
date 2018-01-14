@@ -5,7 +5,7 @@ using UnityEngine;
 public class DealDamage : MonoBehaviour {
     public int myDamage = 8;
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnCollisionEnter(Collision collision)
     {
         UnitHealth uh = collision.gameObject.GetComponent<UnitHealth>();
         if (uh != null)

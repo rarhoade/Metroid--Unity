@@ -22,20 +22,4 @@ public class PlayerRun : MonoBehaviour {
 
         rigid.velocity = newVelocity;
 	}
-
-    /*bool IsGrounded()
-    {
-        Collider col = this.GetComponentInChildren<Collider>();
-
-        Ray ray = new Ray(col.bounds.center, Vector3.down);
-
-        float radius = col.bounds.extents.x - .05f;
-
-        float fullDistance = col.bounds.extents.y + 0.5f;
-
-        if (Physics.SphereCast(ray, radius, fullDistance))
-            return true;
-        else
-            return false;
-    }*/
 }
