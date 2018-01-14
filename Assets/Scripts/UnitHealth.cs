@@ -40,6 +40,7 @@ public class UnitHealth : MonoBehaviour {
 
     IEnumerator IFrames()
     {
+        Physics.IgnoreLayerCollision(this.gameObject.layer, 10, true);
         SpriteRenderer[] sprites = gameObject.GetComponentsInChildren<SpriteRenderer>();
         for (int i = 0; i < numberOfBlinks; i++)
         {
@@ -48,6 +49,7 @@ public class UnitHealth : MonoBehaviour {
             SetSpritesAlpha(sprites, 1f);
             yield return new WaitForSeconds(blink);
         }
+        Physics.IgnoreLayerCollision(this.gameObject.layer, 10, false);
     }
 
     private void SetSpritesAlpha(SpriteRenderer[] s, float alpha)
