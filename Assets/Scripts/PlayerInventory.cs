@@ -19,16 +19,16 @@ public class PlayerInventory : MonoBehaviour {
 
     public void OnTriggerEnter(Collider other)
     {
-        if(other.tag == "MorphBall")
-        {
-            Destroy(other.gameObject);
-            hasMorphBall = true;
-        }
-        else if(other.tag == "LongShot")
-        {
-            Destroy(other.gameObject);
-            hasLongShot = true;
-        }
+		if (other.tag == "MorphBall") {
+			Destroy (other.gameObject);
+			hasMorphBall = true;
+		} else if (other.tag == "LongShot") {
+			Destroy (other.gameObject);
+			hasLongShot = true;
+		} else if (other.tag == "Missle") {
+			Destroy (other.gameObject);
+			addMissles ();
+		}
     }
 
     public void addMissles()
