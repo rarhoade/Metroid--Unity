@@ -33,7 +33,7 @@ public class UnitHealth : MonoBehaviour {
         }
         if (healthTotal <= 0)
         {
-            //TODO Die
+            Destroy(this.gameObject);
         }
     }
 
