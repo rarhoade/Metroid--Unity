@@ -11,11 +11,14 @@ public class PlayerJump : MonoBehaviour {
     public Sprite stillJumpLeft;
     public Sprite standLeft;
     public Sprite standRight;
+    public Sprite moveJumpRight;
+    public Sprite moveJumpLeft;
 
     public float jumpPower = 12;
     public float sink = -10;
     public float boxSizes = 5;
     bool stillJumped = false;
+    bool moveJumped = false;
     private PlayerDirection instance;
 
 	// Use this for initialization
@@ -36,8 +39,11 @@ public class PlayerJump : MonoBehaviour {
             newVelocity.y = jumpPower;
             if (rigid.velocity.x == 0)
             {
-                stillJumped = true;
-                spriteR.sprite = stillJumpRight;
+                StartCoroutine(SetStillJumped());
+            }
+            else
+            {
+                StartCoroutine(SetMoveJumped());
             }
         }
 
@@ -75,8 +81,13 @@ public class PlayerJump : MonoBehaviour {
             if (stillJumped)
             {
                 stillJumped = false;
-                spriteR.sprite = standRight;
+                
             }
+            else if (moveJumped)
+            {
+                moveJumped = false;
+            }
+            spriteR.sprite = standRight;
         }
     }
 
@@ -99,10 +110,22 @@ public class PlayerJump : MonoBehaviour {
         return stillJumped;
     }
 
+    public bool IsMoveJumped()
+    {
+        return moveJumped;
+    }
+
     IEnumerator SetStillJumped()
     {
         yield return new WaitForSeconds(0.1f);
         stillJumped = true; 
         spriteR.sprite = stillJumpRight;
+    }
+
+    IEnumerator SetMoveJumped()
+    {
+        yield return new WaitForSeconds(0.1f);
+        moveJumped = true;
+        spriteR.sprite = moveJumpRight;
     }
 }

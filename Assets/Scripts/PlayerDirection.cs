@@ -43,7 +43,7 @@ public class PlayerDirection : MonoBehaviour {
         if (lookingUp && !holdingUp && playerState.isStanding())
         {
             lookingUp = false;
-            if (!playerJump.IsStillJumped())
+            if (!playerJump.IsStillJumped() && !playerJump.IsMoveJumped())
             {
                 spriteRenderer.sprite = spriteLookingForward;
             }
@@ -51,7 +51,7 @@ public class PlayerDirection : MonoBehaviour {
         else if(!lookingUp && holdingUp && playerState.isStanding())
         {
             lookingUp = true;
-            if (!playerJump.IsStillJumped())
+            if (!playerJump.IsStillJumped() && !playerJump.IsMoveJumped())
             {
                 spriteRenderer.sprite = spriteLookingUpward;
             }
