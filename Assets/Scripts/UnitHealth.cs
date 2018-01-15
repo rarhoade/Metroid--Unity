@@ -14,9 +14,13 @@ public class UnitHealth : MonoBehaviour {
 
     // Update is called once per frame
     void Update () {
-		if(Input.GetKeyDown(KeyCode.Alpha1))
+        if (energy != null)
         {
-            invulnerability = !invulnerability;
+            if (Input.GetKeyDown(KeyCode.Alpha1))
+            {
+                invulnerability = !invulnerability;
+                Physics.IgnoreLayerCollision(this.gameObject.layer, 10, invulnerability);
+            }
         }
 	}
 
@@ -86,7 +90,6 @@ public class UnitHealth : MonoBehaviour {
 
 	public void AddHealthFromPickup()
 	{
-		
 		healthTotal += 3;
 		if (energy != null)
 		{
@@ -94,4 +97,8 @@ public class UnitHealth : MonoBehaviour {
 		}
 	}
     
+    public bool IsInvincable()
+    {
+        return invulnerability;
+    }
 }

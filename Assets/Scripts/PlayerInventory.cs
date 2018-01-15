@@ -7,21 +7,29 @@ public class PlayerInventory : MonoBehaviour {
 
     public Text missleCount;
 
-	private UnitHealth instance;
+	private UnitHealth uh;
 
     public bool hasMorphBall = false;
     public bool hasLongShot = false;
 
     private int missles;
 
-
-	private void Awake(){
-		instance = GetComponent<UnitHealth> ();
-	}
-
     private void Start()
     {
         missles = 3;
+        uh = GetComponent<UnitHealth>();
+    }
+
+    private void Update()
+    {
+        if (uh.IsInvincable())
+        {
+            missleCount.text = "99";
+        }
+        else
+        {
+            missleCount.text = missles.ToString();
+        }
     }
 
     public void OnTriggerEnter(Collider other)
@@ -37,7 +45,7 @@ public class PlayerInventory : MonoBehaviour {
 			addMissles ();
 		} else if (other.tag == "Energy") {
 			Destroy (other.gameObject);
-			instance.AddHealthFromPickup ();
+			uh.AddHealthFromPickup ();
 		}
 
     }
@@ -45,7 +53,10 @@ public class PlayerInventory : MonoBehaviour {
     public void addMissles()
     {
         missles++;
-        missleCount.text = missles.ToString();
+        if (!uh.IsInvincable())
+        {
+            missleCount.text = missles.ToString();
+        }
     }
 
     public bool HasMorphBall()
