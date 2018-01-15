@@ -14,7 +14,7 @@ public class UnitHealth : MonoBehaviour {
     public int numberOfBlinks = 2;
     public float blink = 0.4f;
 
-	void start(){
+	void Start(){
 		rigid = GetComponent<Rigidbody> ();
 	}
 
@@ -36,16 +36,17 @@ public class UnitHealth : MonoBehaviour {
         {
             //Debug.Log("Health: " + healthTotal.ToString());
             //Debug.Log("Damage: " + damage.ToString());
+            Debug.Log("Striker " + otherObj.ToString());
+            Debug.Log("My Pos: " + this.gameObject.transform.position.ToString());
 
             healthTotal -= damage;
-			//NOT WORKING KNOCKBACK
-			/*if (this.name == "Player") 
-			{
-				//execute knockback
-				//calculate by figuring out the direction of the 
-				Debug.Log(this.transform.position);
-				rigid.velocity = (otherObj - this.transform.position) * knockback;
-			}*/
+            //NOT WORKING KNOCKBACK
+            //execute knockback
+            //calculate by figuring out the direction of the 
+            Debug.Log("Calc: " + (this.transform.position - otherObj).ToString());
+            //rigid.velocity = (this.transform.position - otherObj) * knockback;
+            rigid.AddForce((this.transform.position - otherObj) * knockback);
+			
             if (energy != null)
             {
                 energy.text = healthTotal.ToString();
