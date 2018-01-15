@@ -35,14 +35,14 @@ public class PlayerState : MonoBehaviour {
             standing = false;
         }
 
-        if (!standing && (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.Z)))
+        if (!standing && (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.X)))
         {
             Standing.SetActive(true);
             Morphed.SetActive(false);
             StartCoroutine(SetStanding());
         }
         
-        shooting = Input.GetKeyDown(KeyCode.X);
+        shooting = Input.GetKeyDown(KeyCode.Z);
 
         running = rigid.velocity.x != 0;
     }

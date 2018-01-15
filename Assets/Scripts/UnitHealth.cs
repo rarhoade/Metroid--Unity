@@ -17,6 +17,7 @@ public class UnitHealth : MonoBehaviour {
 	void start(){
 		rigid = GetComponent<Rigidbody> ();
 	}
+
     // Update is called once per frame
     void Update () {
         if (energy != null)
@@ -42,7 +43,7 @@ public class UnitHealth : MonoBehaviour {
 			{
 				//execute knockback
 				//calculate by figuring out the direction of the 
-				Debug.Log((otherObj - this.transform.position) * knockback);
+				Debug.Log(this.transform.position);
 				rigid.velocity = (otherObj - this.transform.position) * knockback;
 			}*/
             if (energy != null)
