@@ -8,6 +8,7 @@ public class UnitHealth : MonoBehaviour {
     public Text energy;
 
 	private Rigidbody rigid;
+
     public int healthTotal = 30;
     public bool invulnerability = false;
     public int numberOfBlinks = 2;
