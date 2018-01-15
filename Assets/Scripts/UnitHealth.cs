@@ -37,13 +37,14 @@ public class UnitHealth : MonoBehaviour {
             //Debug.Log("Damage: " + damage.ToString());
 
             healthTotal -= damage;
-			if (this.name == "Player") 
+			//NOT WORKING KNOCKBACK
+			/*if (this.name == "Player") 
 			{
 				//execute knockback
 				//calculate by figuring out the direction of the 
 				Debug.Log((otherObj - this.transform.position) * knockback);
 				rigid.velocity = (otherObj - this.transform.position) * knockback;
-			}
+			}*/
             if (energy != null)
             {
                 energy.text = healthTotal.ToString();

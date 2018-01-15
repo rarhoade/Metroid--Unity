@@ -21,7 +21,6 @@ public class DealDamage : MonoBehaviour {
         UnitHealth uh = go.GetComponent<UnitHealth>();
         if (uh != null)
         {
-			Vector3 otherPost = new Vector3 (go.transform.position.x, go.transform.position.y, 0);
 			//Debug.Log (otherPost);
 			uh.TakeDamage(myDamage, knockback, this.transform.position);
         }
