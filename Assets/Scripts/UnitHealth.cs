@@ -7,11 +7,15 @@ public class UnitHealth : MonoBehaviour {
 
     public Text energy;
 
+	private Rigidbody rigid;
     public int healthTotal = 30;
     public bool invulnerability = false;
     public int numberOfBlinks = 2;
     public float blink = 0.4f;
 
+	void start(){
+		rigid = GetComponent<Rigidbody> ();
+	}
     // Update is called once per frame
     void Update () {
         if (energy != null)
@@ -24,14 +28,21 @@ public class UnitHealth : MonoBehaviour {
         }
 	}
 
-    public void TakeDamage(int damage, float knockback)
+	public void TakeDamage(int damage, float knockback, Vector3 otherObj)
     {
         if (!invulnerability)
         {
-            Debug.Log("Health: " + healthTotal.ToString());
-            Debug.Log("Damage: " + damage.ToString());
+            //Debug.Log("Health: " + healthTotal.ToString());
+            //Debug.Log("Damage: " + damage.ToString());
 
             healthTotal -= damage;
+			if (this.name == "Player") 
+			{
+				//execute knockback
+				//calculate by figuring out the direction of the 
+				Debug.Log((otherObj - this.transform.position) * knockback);
+				rigid.velocity = (otherObj - this.transform.position) * knockback;
+			}
             if (energy != null)
             {
                 energy.text = healthTotal.ToString();
