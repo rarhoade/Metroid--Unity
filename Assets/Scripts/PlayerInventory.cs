@@ -9,15 +9,16 @@ public class PlayerInventory : MonoBehaviour {
 
 	private UnitHealth uh;
 
+	AudioSource pickUpNoise;
     public bool hasMorphBall = false;
     public bool hasLongShot = false;
-
     private int missles;
 
     private void Start()
     {
         missles = 3;
         uh = GetComponent<UnitHealth>();
+		pickUpNoise = GetComponent<AudioSource> ();
     }
 
     private void Update()
@@ -33,12 +34,16 @@ public class PlayerInventory : MonoBehaviour {
     }
 
     public void OnTriggerEnter(Collider other)
-    {
+	{
 		if (other.tag == "MorphBall") {
 			Destroy (other.gameObject);
+			pickUpNoise.Play ();
+			StartCoroutine (CollectAndPause ());
 			hasMorphBall = true;
 		} else if (other.tag == "LongShot") {
+			pickUpNoise.Play ();
 			Destroy (other.gameObject);
+			StartCoroutine(CollectAndPause());
 			hasLongShot = true;
 		} else if (other.tag == "Missle") {
 			Destroy (other.gameObject);
@@ -68,4 +73,13 @@ public class PlayerInventory : MonoBehaviour {
     {
         return hasLongShot;
     }
+
+	private IEnumerator CollectAndPause(){
+		Time.timeScale = 0.001f;
+		float pauseEnder = Time.realtimeSinceStartup + 1.0f;
+		while (pauseEnder >Time.realtimeSinceStartup) {
+			yield return 0;
+		}
+		Time.timeScale = 1;
+	}
 }
