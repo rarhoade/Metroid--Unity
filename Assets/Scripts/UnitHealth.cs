@@ -36,14 +36,14 @@ public class UnitHealth : MonoBehaviour {
         {
             //Debug.Log("Health: " + healthTotal.ToString());
             //Debug.Log("Damage: " + damage.ToString());
-            Debug.Log("Striker " + otherObj.ToString());
-            Debug.Log("My Pos: " + this.gameObject.transform.position.ToString());
+            //Debug.Log("Striker " + otherObj.ToString());
+            //Debug.Log("My Pos: " + this.gameObject.transform.position.ToString());
 
             healthTotal -= damage;
             //NOT WORKING KNOCKBACK
             //execute knockback
             //calculate by figuring out the direction of the 
-            Debug.Log("Calc: " + (this.transform.position - otherObj).ToString());
+            //Debug.Log("Calc: " + (this.transform.position - otherObj).ToString());
             //rigid.velocity = (this.transform.position - otherObj) * knockback;
             rigid.AddForce((this.transform.position - otherObj) * knockback);
 			
