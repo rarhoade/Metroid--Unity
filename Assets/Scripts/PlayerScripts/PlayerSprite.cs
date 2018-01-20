@@ -6,6 +6,7 @@ public class PlayerSprite : MonoBehaviour {
 
     public float animTime;
     public float shootingWindow;
+    public GameObject morphedForm;
     public Sprite[] runningRight;
     public Sprite[] morphRun;
     public Sprite[] shootingRight;
@@ -20,6 +21,7 @@ public class PlayerSprite : MonoBehaviour {
     private PlayerDirection playerDirection;
     private PlayerState playerState;
     private SpriteRenderer spriteRenderer;
+    private SpriteRenderer morphedRenderer;
 
     private bool shotInAir = false;
     private float timeSinceLastShot = 0f;
@@ -40,6 +42,7 @@ public class PlayerSprite : MonoBehaviour {
         playerState = this.GetComponent<PlayerState>();
         playerJump = this.GetComponentInChildren<PlayerJump>();
         spriteRenderer = this.GetComponentInChildren<SpriteRenderer>();
+        morphedRenderer = morphedForm.GetComponent<SpriteRenderer>();
         StartCoroutine(RunForestRun());
         StartCoroutine(SpinMove());
         StartCoroutine(SonicRun());
@@ -179,7 +182,11 @@ public class PlayerSprite : MonoBehaviour {
         {
             if (morphed)
             {
-                spriteRenderer.sprite = morphRun[morphInt % morphRun.Length];
+                morphedRenderer.sprite = morphRun[morphInt % morphRun.Length];
+                if (playerState.IsRunning())
+                {
+                    morphInt++;
+                }
                 yield return new WaitForSeconds(animTime);
             }
             else
