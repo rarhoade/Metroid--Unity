@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 8cbd80b6603415540bb106d47271a448
-timeCreated: 1516213898
+timeCreated: 1516562467
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -15,6 +15,10 @@ TextureImporter:
     21300016: Skree_Flat
     21300018: Skree_Right
     21300020: Skree_Left
+    21300022: Ripper_basic
+    21300024: Ripper_orange
+    21300026: Ripper_red
+    21300028: Ripper_yellow
   externalObjects: {}
   serializedVersion: 4
   mipmaps:
@@ -316,6 +320,62 @@ TextureImporter:
         - {x: -4, y: -12}
         - {x: 4, y: -12}
         - {x: 4, y: 12}
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Ripper_basic
+      rect:
+        serializedVersion: 2
+        x: 422
+        y: 283
+        width: 16
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Ripper_orange
+      rect:
+        serializedVersion: 2
+        x: 440
+        y: 283
+        width: 16
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Ripper_red
+      rect:
+        serializedVersion: 2
+        x: 458
+        y: 283
+        width: 16
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Ripper_yellow
+      rect:
+        serializedVersion: 2
+        x: 476
+        y: 283
+        width: 16
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
       physicsShape: []
       tessellationDetail: 0
     outline: []
