@@ -6,6 +6,8 @@ public class DealDamage : MonoBehaviour {
     public int myDamage = 8;
     public float knockback = 10f;
 
+    public GameObject tetheredDoor;
+
     private void OnTriggerEnter(Collider collision)
     {
 		dealDamage(collision.gameObject);
@@ -19,10 +21,11 @@ public class DealDamage : MonoBehaviour {
 	private void dealDamage(GameObject go)
     {
         UnitHealth uh = go.GetComponent<UnitHealth>();
+        Debug.Log(go.name);
         if (uh != null)
         {
-			//Debug.Log (otherPost);
-			uh.TakeDamage(myDamage, knockback, this.transform.position);
+            //Debug.Log (otherPost);
+            uh.TakeDamage(myDamage, knockback, this.transform.position);
         }
     }
 }
