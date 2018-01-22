@@ -8,6 +8,7 @@ TagManager:
   - LongShot
   - Missle
   - Energy
+  - MisslePower
   layers:
   - Default
   - TransparentFX

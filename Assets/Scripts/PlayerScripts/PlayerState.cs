@@ -16,6 +16,7 @@ public class PlayerState : MonoBehaviour {
     private bool lookingUp = false;
     private bool shooting = false;
     private bool running = false;
+    private bool isMissleOn = false;
     private int inRoom = 0;
 
     private Vector2[] roomMins = { new Vector2(0, 15),  new Vector2(80, 15), new Vector2(96, 15),  new Vector2(160,13),  new Vector2(176, 120), new Vector2(192, 58),  new Vector2(208, 60), new Vector2(112, 150), new Vector2(96, 150) };
@@ -40,7 +41,22 @@ public class PlayerState : MonoBehaviour {
         }
     }
 
-
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            if (isMissleOn && playerInventory.HasMisslePower())
+            {
+                Debug.Log("MissleMode is Off");
+                isMissleOn = false;
+            }
+            else if(!isMissleOn && playerInventory.HasMisslePower())
+            {
+                Debug.Log("MissleMode is On");
+                isMissleOn = true;
+            }
+        }
+    }
     // Update is called once per frame
     //TODO update states so that you can only morphball in mid air
     void LateUpdate()
@@ -81,6 +97,11 @@ public class PlayerState : MonoBehaviour {
     public bool IsRunning()
     {
         return running;
+    }
+
+    public bool IsMissleOn()
+    {
+        return isMissleOn;
     }
 
     public void SetLookingUp(bool l)

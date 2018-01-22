@@ -12,6 +12,7 @@ public class PlayerInventory : MonoBehaviour {
 	AudioSource pickUpNoise;
     public bool hasMorphBall = false;
     public bool hasLongShot = false;
+    public bool hasMisslePower = false;
     private int missles;
 
     private void Start()
@@ -37,11 +38,9 @@ public class PlayerInventory : MonoBehaviour {
 	{
 		if (other.tag == "MorphBall") {
 			Destroy (other.gameObject);
-			pickUpNoise.Play ();
 			StartCoroutine (CollectAndPause ());
 			hasMorphBall = true;
 		} else if (other.tag == "LongShot") {
-			pickUpNoise.Play ();
 			Destroy (other.gameObject);
 			StartCoroutine(CollectAndPause());
 			hasLongShot = true;
@@ -52,12 +51,28 @@ public class PlayerInventory : MonoBehaviour {
 			Destroy (other.gameObject);
 			uh.AddHealthFromPickup ();
 		}
+        else if (other.tag == "MisslePower")
+        {
+            Destroy(other.gameObject);
+            StartCoroutine(CollectAndPause());
+            Debug.Log("Found Missle PowerUp");
+            hasMisslePower = true;
+        }
 
     }
 
     public void addMissles()
     {
         missles++;
+        if (!uh.IsInvincable())
+        {
+            missleCount.text = missles.ToString();
+        }
+    }
+
+    public void subtractMissles()
+    {
+        missles = missles - 1;
         if (!uh.IsInvincable())
         {
             missleCount.text = missles.ToString();
@@ -74,7 +89,18 @@ public class PlayerInventory : MonoBehaviour {
         return hasLongShot;
     }
 
+    public bool HasMisslePower()
+    {
+        return hasMisslePower;
+    }
+
+    public bool HasNumMissles()
+    {
+        return (missles > 0);
+    }
+
 	private IEnumerator CollectAndPause(){
+        pickUpNoise.Play();
 		Time.timeScale = 0.001f;
 		float pauseEnder = Time.realtimeSinceStartup + 1.0f;
 		while (pauseEnder >Time.realtimeSinceStartup) {
