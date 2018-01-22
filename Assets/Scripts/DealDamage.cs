@@ -6,8 +6,6 @@ public class DealDamage : MonoBehaviour {
     public int myDamage = 8;
     public float knockback = 10f;
 
-    public GameObject tetheredDoor;
-
     private void OnTriggerEnter(Collider collision)
     {
 		dealDamage(collision.gameObject);

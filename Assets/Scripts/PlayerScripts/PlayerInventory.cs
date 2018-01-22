@@ -72,9 +72,10 @@ public class PlayerInventory : MonoBehaviour {
 
     public void subtractMissles()
     {
-        missles = missles - 1;
+        //missles = missles - 1;
         if (!uh.IsInvincable())
         {
+            missles = missles - 1;
             missleCount.text = missles.ToString();
         }
     }
