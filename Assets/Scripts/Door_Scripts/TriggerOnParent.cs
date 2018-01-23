@@ -13,7 +13,7 @@ public class TriggerOnParent : MonoBehaviour {
 	// Update is called once per frame
 	void OnTriggerEnter(Collider other){
 		if (other.gameObject.layer == 8) {
-			parentalUnit.initiateCameraTransition ();
+			parentalUnit.initiateTransition ();
 		}
 	}
 }

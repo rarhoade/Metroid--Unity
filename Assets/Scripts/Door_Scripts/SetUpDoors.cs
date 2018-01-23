@@ -4,12 +4,11 @@ using UnityEngine;
 
 public class SetUpDoors : MonoBehaviour {
 
-
-	public int connectedDoor;
-	public float secondsToWait = 1.0f;
+	public float secondsToWait = 2.0f;
+    public float bufferSides = 0.15f;
 	// Use this for initialization
 
-	public void doorMoveSetup()
+	public void doorOpenClose()
 	{
 		StartCoroutine (DestroyAndReAppearCenter ());
 		StartCoroutine (DestroyAndReAppearTopAndBottom ());
@@ -18,13 +17,13 @@ public class SetUpDoors : MonoBehaviour {
 	IEnumerator DestroyAndReAppearCenter()
 	{
 		this.transform.GetChild (1).gameObject.SetActive (false);
-		yield return new WaitForSeconds (secondsToWait + 0.15f);
+		yield return new WaitForSeconds (secondsToWait + bufferSides);
 		this.transform.GetChild (1).gameObject.SetActive (true);
 	}
 
 	IEnumerator DestroyAndReAppearTopAndBottom()
 	{
-		yield return new WaitForSeconds (0.15f);
+		yield return new WaitForSeconds (bufferSides);
 		this.transform.GetChild (0).gameObject.SetActive (false);
 		this.transform.GetChild (2).gameObject.SetActive (false);
 		yield return new WaitForSeconds (secondsToWait );

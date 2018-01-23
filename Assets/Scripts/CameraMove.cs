@@ -7,8 +7,10 @@ public class CameraMove : MonoBehaviour {
     public float smoothingTimeX;
     public float smoothingTimeY;
     public GameObject player;
+    public int transitionSpeed;
 	private bool transitioning;
-	int targetedRoom;
+	private int targetedRoom;
+    private int velo;
     private PlayerState ps;
     private Vector2 vel;
     private Vector2[] minBounds = { new Vector2(21.5f,22), new Vector2(87.5f,22), new Vector2(103.5f, 22), new Vector2(167.5f, 20.5f),  new Vector2(183.5f, 127.5f), new Vector2(199.5f, 65.5f),  new Vector2(215.5f, 67.5f), new Vector2(119.5f, 157.5f), new Vector2(103.5f, 157.5f) };
@@ -25,7 +27,7 @@ public class CameraMove : MonoBehaviour {
 	// Update is called once per frame
 	void FixedUpdate () {
 		if (!transitioning) {
-			Debug.Log ("Uh oh");
+			//Debug.Log ("Uh oh");
 			float posX = Mathf.SmoothDamp (transform.position.x, player.transform.position.x, ref vel.x, smoothingTimeX);
 			float posY = Mathf.SmoothDamp (transform.position.y, player.transform.position.y, ref vel.y, smoothingTimeY);
 
@@ -35,34 +37,36 @@ public class CameraMove : MonoBehaviour {
 		} 
 		else 
 		{
-			string hasher = ps.whichRoom ().ToString () + targetedRoom.ToString ();
-			//Debug.Log (hasher);
-			int velo = map [hasher];
-			Debug.Log ("Camera:" + this.transform.position);
-			transform.position = new Vector3(transform.position.x + (velo*10), transform.position.y, transform.position.z);
+			//Debug.Log ("Camera:" + this.transform.position);
+			transform.position = new Vector3(transform.position.x + (transitionSpeed*velo*Time.fixedDeltaTime), transform.position.y, transform.position.z);
 			if (velo < 0) {
 				if (this.transform.position.x < maxBounds [targetedRoom].x) {
-					Debug.Log ("Transitioned");
+					//Debug.Log ("Transitioned");
 					transitioning = false;
 				}
 			} 
 			else {
 				if (this.transform.position.x > minBounds [targetedRoom].x) {
-					Debug.Log ("Transitioned");
+					//Debug.Log ("Transitioned");
 					transitioning = false;
 				}
 			}
-			Debug.Log ("Camera:" + this.transform.position);
+			//Debug.Log ("Camera:" + this.transform.position);
 		}
     }
 
-    public void transition(int targetRoom)
+    public int transition(int targetRoom)
     {
-		Debug.Log ("Transition has been called");
-        transitioning = true;
-        //TODO Move camera smoothly from ps.whichRoom() to targetRoom along ONLY X axis
-		targetedRoom = targetRoom;
-        //transitioning = false;
+        if (!transitioning)
+        {
+            transitioning = true;
+		    targetedRoom = targetRoom;
+            string hasher = ps.whichRoom().ToString() + targetedRoom.ToString();
+            Debug.Log (hasher);
+            velo = map[hasher];
+            return velo;
+        }
+        return 0;
     }
 
 	void mapInit(){

@@ -14,7 +14,7 @@ public class OpenWhenHit : MonoBehaviour {
     {
         if(other.gameObject.layer == 9)
         {
-			parentalUnit.doorMoveSetup ();
+			parentalUnit.doorOpenClose ();
         }
     }
 		
