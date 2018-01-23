@@ -28,9 +28,12 @@ public class PlayerWeapon : MonoBehaviour {
         if (playerState.IsShooting())
         {
             GameObject bulletInstance = null;
-            if(playerState.IsMissleOn() && playerInventory.HasNumMissles())
+            if(playerState.IsMissleOn() && (playerInventory.HasNumMissles() || playerInventory.missleCount.text == "99"))
             {
-                playerInventory.subtractMissles();
+                if (playerInventory.missleCount.text != "99")
+                {
+                    playerInventory.subtractMissles();
+                }
                 bulletInstance = GameObject.Instantiate(misslePrefab);
             }
             else if (playerInventory.HasLongShot() && !playerState.IsMissleOn())
