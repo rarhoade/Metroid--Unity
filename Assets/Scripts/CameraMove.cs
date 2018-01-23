@@ -37,7 +37,7 @@ public class CameraMove : MonoBehaviour {
 		{
 			string hasher = ps.whichRoom ().ToString () + targetedRoom.ToString ();
 			//Debug.Log (hasher);
-			int velo = map [ps.whichRoom ().ToString () + targetedRoom.ToString ()];
+			int velo = map [hasher];
 			Debug.Log ("Camera:" + this.transform.position);
 			transform.position = new Vector3(transform.position.x + (velo*10), transform.position.y, transform.position.z);
 			if (velo < 0) {

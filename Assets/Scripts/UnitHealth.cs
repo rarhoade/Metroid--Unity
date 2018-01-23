@@ -120,7 +120,7 @@ public class UnitHealth : MonoBehaviour {
     {
         SpriteRenderer s = gameObject.GetComponent<SpriteRenderer>();
 
-        Color c = new Color(s.color.r, s.color.g, s.color.b);
+        //Color c = new Color(s.color.r, s.color.g, s.color.b);
         s.color = new Color(1, 0, 0, 1);
         yield return new WaitForSeconds(0.2f);
         s.color = new Color(1, 1, 1);

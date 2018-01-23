@@ -12,14 +12,12 @@ public class PlayerJump : MonoBehaviour {
     public float boxSizes = 5;
     bool stillJumped = false;
     bool moveJumped = false;
-    private PlayerDirection instance;
     private PlayerState playerState;
 
 	// Use this for initialization
 	void Awake () {
         rigid = GetComponentInParent<Rigidbody>();
         col = this.GetComponent<Collider>();
-        instance = GetComponentInParent<PlayerDirection>();
         playerState.GetComponentInParent<PlayerState>();
 	}
 	

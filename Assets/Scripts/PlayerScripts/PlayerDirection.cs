@@ -5,7 +5,6 @@ using UnityEngine;
 public class PlayerDirection : MonoBehaviour {
 
     private PlayerState playerState;
-    private PlayerJump playerJump;
 
     private bool holdingUp = false;
     private bool facingRight = true;
@@ -13,7 +12,6 @@ public class PlayerDirection : MonoBehaviour {
     private void Start()
     {
         playerState = this.GetComponent<PlayerState>();
-        playerJump = GetComponentInChildren<PlayerJump>();
     }
 
     // Update is called once per frame
