@@ -30,7 +30,7 @@ public class UnitHealth : MonoBehaviour {
         }
 	}
 
-	public void TakeDamage(int damage, float knockback, Vector3 otherObj)
+	public void TakeDamage(int damage, float knockback, Vector3 otherObj, bool lateralKnockback)
     {
         if (!invulnerability)
         {
@@ -39,14 +39,36 @@ public class UnitHealth : MonoBehaviour {
             //Debug.Log("Striker " + otherObj.ToString());
             //Debug.Log("My Pos: " + this.gameObject.transform.position.ToString());
 
+
             healthTotal -= damage;
             //NOT WORKING KNOCKBACK
             //execute knockback
             //calculate by figuring out the direction of the 
             //Debug.Log("Calc: " + (this.transform.position - otherObj).ToString());
             //rigid.velocity = (this.transform.position - otherObj) * knockback;
-            rigid.AddForce((this.transform.position - otherObj) * knockback);
+            if (lateralKnockback)
+            {
+                if (this.transform.position.x - otherObj.x < 0.3f)
+                {
+                    Debug.Log("Lol");
+                    Debug.Log(transform.right * -1 * knockback);
+                    rigid.AddForce(transform.right * -1 * knockback);
+                }
+                else
+                {
+                    rigid.AddForce((this.transform.position - otherObj) * knockback);
+                }
+            }
+            else
+            {
+                rigid.AddForce((this.transform.position - otherObj) * knockback);
+            }
 			
+            if (healthTotal < 0)
+            {
+                healthTotal = 0;
+            }
+
             if (energy != null)
             {
                 energy.text = healthTotal.ToString();

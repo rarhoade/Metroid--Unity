@@ -16,6 +16,16 @@ public class PlayerSprite : MonoBehaviour {
     public Sprite jumpShootUp;
     public Sprite[] jumpSpin;
 
+    public Sprite[] missleRunningRight;
+    public Sprite[] missleMorphRun;
+    public Sprite[] missleShootingRight;
+    public Sprite[] missleShootingUp;
+    public Sprite missleStillJumpRight;
+    public Sprite missleJumpShootRight;
+    public Sprite missleJumpShootUp;
+    public Sprite[] missleJumpSpin;
+
+
 
     private PlayerJump playerJump;
     private PlayerDirection playerDirection;
@@ -88,18 +98,41 @@ public class PlayerSprite : MonoBehaviour {
                     if (playerDirection.IsHoldingUp()) //is holding up key
                     {
                         playerState.SetLookingUp(true);
-                        spriteRenderer.sprite = jumpShootUp;
+                        if (playerState.IsMissleOn())
+                        {
+                            spriteRenderer.sprite = missleJumpShootUp;
+                        }
+                        else
+                        {
+                            spriteRenderer.sprite = jumpShootUp;
+                        }
                     }
                     else //isnt holding up key
                     {
                         playerState.SetLookingUp(false);
-                        spriteRenderer.sprite = jumpShootRight;
+
+                        if (playerState.IsMissleOn())
+                        {
+                            spriteRenderer.sprite = missleJumpShootRight;
+                        }
+                        else
+                        {
+                            spriteRenderer.sprite = jumpShootRight;
+                        }
                     }
                     spinMove = false;
                 }
                 else if (playerJump.IsStillJumped()) //jumped from stationary
                 {
-                    spriteRenderer.sprite = stillJumpRight;
+                    if (playerState.IsMissleOn())
+                    {
+                        spriteRenderer.sprite = missleStillJumpRight;
+                    }
+                    else
+                    {
+                        spriteRenderer.sprite = stillJumpRight;
+                    }
+
                     spinMove = false;
                 }
                 else if (playerJump.IsMoveJumped()) //is beyblade
@@ -125,15 +158,36 @@ public class PlayerSprite : MonoBehaviour {
             {
                 if (playerDirection.IsHoldingUp())
                 {
-                    spriteRenderer.sprite = shootingUp[(runningInt % (shootingUp.Length - 1)) + 1];
+                    if (playerState.IsMissleOn())
+                    {
+                        spriteRenderer.sprite = missleShootingUp[(runningInt % (shootingUp.Length - 1)) + 1];
+                    }
+                    else
+                    {
+                        spriteRenderer.sprite = shootingUp[(runningInt % (shootingUp.Length - 1)) + 1];
+                    }
                 }
                 else if (timeSinceLastShot <= shootingWindow)
                 {
-                    spriteRenderer.sprite = shootingRight[(runningInt % (shootingRight.Length - 1)) + 1];
+                    if (playerState.IsMissleOn())
+                    {
+                        spriteRenderer.sprite = missleShootingRight[(runningInt % (shootingRight.Length - 1)) + 1];
+                    }
+                    else
+                    {
+                        spriteRenderer.sprite = shootingRight[(runningInt % (shootingRight.Length - 1)) + 1];
+                    }
                 } 
                 else
                 {
-                    spriteRenderer.sprite = runningRight[(runningInt % (runningRight.Length - 1)) + 1];
+                    if (playerState.IsMissleOn())
+                    {
+                        spriteRenderer.sprite = missleRunningRight[(runningInt % (runningRight.Length - 1)) + 1];
+                    }
+                    else
+                    {
+                        spriteRenderer.sprite = runningRight[(runningInt % (runningRight.Length - 1)) + 1];
+                    }
                 }
                 runningInt++;
                 yield return new WaitForSeconds(animTime);
@@ -145,11 +199,25 @@ public class PlayerSprite : MonoBehaviour {
                 {
                     if (playerDirection.IsHoldingUp())
                     {
-                        spriteRenderer.sprite = shootingUp[runningInt];
+                        if (playerState.IsMissleOn())
+                        {
+                            spriteRenderer.sprite = missleShootingUp[runningInt];
+                        }
+                        else
+                        {
+                            spriteRenderer.sprite = shootingUp[runningInt];
+                        }
                     }
                     else
                     {
-                        spriteRenderer.sprite = runningRight[runningInt];
+                        if (playerState.IsMissleOn())
+                        {
+                            spriteRenderer.sprite = missleRunningRight[runningInt];
+                        }
+                        else
+                        {
+                            spriteRenderer.sprite = runningRight[runningInt];
+                        }
                     }
                 }
                 yield return new WaitForEndOfFrame();
@@ -164,7 +232,14 @@ public class PlayerSprite : MonoBehaviour {
         {
             if (spinMove)
             {
-                spriteRenderer.sprite = jumpSpin[spinInt % jumpSpin.Length];
+                if (playerState.IsMissleOn())
+                {
+                    spriteRenderer.sprite = missleJumpSpin[spinInt % jumpSpin.Length];
+                }
+                else
+                {
+                    spriteRenderer.sprite = jumpSpin[spinInt % jumpSpin.Length];
+                }
                 spinInt++;
                 yield return new WaitForSeconds(animTime);
             }
@@ -182,11 +257,15 @@ public class PlayerSprite : MonoBehaviour {
         {
             if (morphed)
             {
-                morphedRenderer.sprite = morphRun[morphInt % morphRun.Length];
-                if (playerState.IsRunning())
+                if (playerState.IsMissleOn())
                 {
-                    morphInt++;
+                    morphedRenderer.sprite = missleMorphRun[morphInt % morphRun.Length];
                 }
+                else
+                {
+                    morphedRenderer.sprite = morphRun[morphInt % morphRun.Length];
+                }
+                morphInt++;
                 yield return new WaitForSeconds(animTime);
             }
             else

@@ -51,7 +51,7 @@ GameObject:
   - component: {fileID: 4155580022343566}
   - component: {fileID: 212631863220267416}
   - component: {fileID: 135775388747158746}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Morphed
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -73,9 +73,10 @@ GameObject:
   - component: {fileID: 114389317325276878}
   - component: {fileID: 114520084498012652}
   - component: {fileID: 114687699846551122}
+  - component: {fileID: 82676629682251834}
   m_Layer: 8
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -183,6 +184,86 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 120
   m_CollisionDetection: 0
+--- !u!82 &82676629682251834
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1596571445277294}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: ed481519f20e67f488485280988cf12d, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!114 &114097093491981228
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -234,6 +315,7 @@ MonoBehaviour:
   missleCount: {fileID: 0}
   hasMorphBall: 0
   hasLongShot: 0
+  hasMisslePower: 0
 --- !u!114 &114414348610613850
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -247,7 +329,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 1938788308106698, guid: 53b42ad770bdd5045864f934e89abf18,
     type: 2}
-  longBulletPrefab: {fileID: 0}
+  longBulletPrefab: {fileID: 1388198026745432, guid: 2247187ac1f0c324eb74b35bc1917aa1,
+    type: 2}
+  misslePrefab: {fileID: 1605781953181930, guid: 3da34cc309273f447812556b8cf2cf6e,
+    type: 2}
   firingPositionForward: {fileID: 4187162207617086}
   firingPositionUpward: {fileID: 4521940378972800}
   firingSpeed: 10
@@ -264,6 +349,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animTime: 0.1
   shootingWindow: 0.2
+  morphedForm: {fileID: 1585916132055764}
   runningRight:
   - {fileID: 21300048, guid: 4a59fbd4f4715d84cba66fdd2ea7d485, type: 3}
   - {fileID: 21300030, guid: 4a59fbd4f4715d84cba66fdd2ea7d485, type: 3}
@@ -292,6 +378,36 @@ MonoBehaviour:
   - {fileID: 21300098, guid: 4a59fbd4f4715d84cba66fdd2ea7d485, type: 3}
   - {fileID: 21300096, guid: 4a59fbd4f4715d84cba66fdd2ea7d485, type: 3}
   - {fileID: 21300094, guid: 4a59fbd4f4715d84cba66fdd2ea7d485, type: 3}
+  missleRunningRight:
+  - {fileID: 21300130, guid: ce94f51f558bd47eca28c0601d6aa21e, type: 3}
+  - {fileID: 21300112, guid: ce94f51f558bd47eca28c0601d6aa21e, type: 3}
+  - {fileID: 21300114, guid: ce94f51f558bd47eca28c0601d6aa21e, type: 3}
+  - {fileID: 21300116, guid: ce94f51f558bd47eca28c0601d6aa21e, type: 3}
+  missleMorphRun:
+  - {fileID: 21300168, guid: ce94f51f558bd47eca28c0601d6aa21e, type: 3}
+  - {fileID: 21300170, guid: ce94f51f558bd47eca28c0601d6aa21e, type: 3}
+  - {fileID: 21300172, guid: ce94f51f558bd47eca28c0601d6aa21e, type: 3}
+  - {fileID: 21300174, guid: ce94f51f558bd47eca28c0601d6aa21e, type: 3}
+  missleShootingRight:
+  - {fileID: 21300130, guid: ce94f51f558bd47eca28c0601d6aa21e, type: 3}
+  - {fileID: 21300132, guid: ce94f51f558bd47eca28c0601d6aa21e, type: 3}
+  - {fileID: 21300134, guid: ce94f51f558bd47eca28c0601d6aa21e, type: 3}
+  - {fileID: 21300136, guid: ce94f51f558bd47eca28c0601d6aa21e, type: 3}
+  missleShootingUp:
+  - {fileID: 21300150, guid: ce94f51f558bd47eca28c0601d6aa21e, type: 3}
+  - {fileID: 21300152, guid: ce94f51f558bd47eca28c0601d6aa21e, type: 3}
+  - {fileID: 21300154, guid: ce94f51f558bd47eca28c0601d6aa21e, type: 3}
+  - {fileID: 21300156, guid: ce94f51f558bd47eca28c0601d6aa21e, type: 3}
+  missleStillJumpRight: {fileID: 21300118, guid: ce94f51f558bd47eca28c0601d6aa21e,
+    type: 3}
+  missleJumpShootRight: {fileID: 21300138, guid: ce94f51f558bd47eca28c0601d6aa21e,
+    type: 3}
+  missleJumpShootUp: {fileID: 21300158, guid: ce94f51f558bd47eca28c0601d6aa21e, type: 3}
+  missleJumpSpin:
+  - {fileID: 21300182, guid: ce94f51f558bd47eca28c0601d6aa21e, type: 3}
+  - {fileID: 21300180, guid: ce94f51f558bd47eca28c0601d6aa21e, type: 3}
+  - {fileID: 21300178, guid: ce94f51f558bd47eca28c0601d6aa21e, type: 3}
+  - {fileID: 21300176, guid: ce94f51f558bd47eca28c0601d6aa21e, type: 3}
 --- !u!114 &114549699495989090
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -328,7 +444,7 @@ SphereCollider:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1585916132055764}
-  m_Material: {fileID: 13400000, guid: ccf0ddc175614d84f98e1555d15a6fda, type: 2}
+  m_Material: {fileID: 13400000, guid: 906bd5bac3cb6c446a6d12880092b4b2, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2

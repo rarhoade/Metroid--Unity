@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4814276073583288}
   - component: {fileID: 212528607428623914}
   - component: {fileID: 65683746502080498}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Missle
   m_TagString: Missle
   m_Icon: {fileID: 0}

@@ -73,7 +73,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myDamage: 8
-  knockback: 1000
+  knockback: 4000
+  lateralKnockback: 1
 --- !u!114 &114083080202959330
 MonoBehaviour:
   m_ObjectHideFlags: 1

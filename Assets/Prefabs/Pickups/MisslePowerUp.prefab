@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4868958367509454}
   - component: {fileID: 212209659415698140}
   - component: {fileID: 65047798905651928}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: MisslePowerUp
   m_TagString: MisslePower
   m_Icon: {fileID: 0}

@@ -5,6 +5,7 @@ using UnityEngine;
 public class DealDamage : MonoBehaviour {
     public int myDamage = 8;
     public float knockback = 10f;
+    public bool lateralKnockback = false;
 
     private void OnTriggerEnter(Collider collision)
     {
@@ -23,7 +24,7 @@ public class DealDamage : MonoBehaviour {
         if (uh != null)
         {
             //Debug.Log (otherPost);
-            uh.TakeDamage(myDamage, knockback, this.transform.position);
+            uh.TakeDamage(myDamage, knockback, this.transform.position, lateralKnockback);
         }
     }
 }

@@ -13,6 +13,8 @@ public class SkreeMovement : MonoBehaviour {
     public float yVel = -2;
     int layerMask = 1 << 8;
 
+    private bool collided = false;
+
 	// Use this for initialization
 	void Start () {
         rigid = GetComponent<Rigidbody>();
@@ -38,7 +40,7 @@ public class SkreeMovement : MonoBehaviour {
                     //Debug.Log("player is detected");
                     //implement tracking slope
                     //If our current position is behind the player's x position move to the right
-                    if((transform.position.x - obj.gameObject.transform.position.x) < 0)
+                    if ((transform.position.x - obj.gameObject.transform.position.x) < 0)
                     {
                         downVel.x = xVel;
                     }
@@ -53,6 +55,20 @@ public class SkreeMovement : MonoBehaviour {
                     rigid.velocity = downVel;
                 }
             }
-        }    
+        }
+        else if (collided)
+        {
+            downVel.x = 0;
+            rigid.velocity = downVel;
+        }
+    }
+
+    private void OnCollisionEnter(Collision obj)
+    {
+        if (obj.gameObject.name == "Standing" || obj.gameObject.name == "Morphed")
+        {
+            collided = true;
+            Debug.Log("Collided");
+        }
     }
 }
