@@ -26,6 +26,7 @@ GameObject:
   - component: {fileID: 114225454133484512}
   - component: {fileID: 136519695329302392}
   - component: {fileID: 114627918161803424}
+  - component: {fileID: 114188875117531716}
   m_Layer: 10
   m_Name: Skree
   m_TagString: Untagged
@@ -73,7 +74,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myDamage: 8
-  knockback: 4000
+  knockback: 10
   lateralKnockback: 1
 --- !u!114 &114083080202959330
 MonoBehaviour:
@@ -91,6 +92,18 @@ MonoBehaviour:
   invulnerability: 0
   numberOfBlinks: 2
   blink: 0.4
+--- !u!114 &114188875117531716
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1542929726145610}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52fbc4f79f722584999a36135fc0b801, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  explodeBulletPrefab: {fileID: 0}
 --- !u!114 &114225454133484512
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -107,7 +120,7 @@ MonoBehaviour:
   rad: 3.14
   downVel: {x: 0, y: 0, z: 0}
   xVel: 2
-  yVel: -4
+  yVel: -6
 --- !u!114 &114627918161803424
 MonoBehaviour:
   m_ObjectHideFlags: 1
