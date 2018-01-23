@@ -13,39 +13,45 @@ public class PlayerJump : MonoBehaviour {
     bool stillJumped = false;
     bool moveJumped = false;
     private PlayerDirection instance;
+    private PlayerState playerState;
 
 	// Use this for initialization
 	void Awake () {
         rigid = GetComponentInParent<Rigidbody>();
         col = this.GetComponent<Collider>();
         instance = GetComponentInParent<PlayerDirection>();
+        playerState.GetComponentInParent<PlayerState>();
 	}
 	
 	// Update is called once per frame
-	void Update () {
-        Vector3 newVelocity = rigid.velocity;
-        
-        //Vertical
-        if (Input.GetKeyDown(KeyCode.X) && IsGrounded())
+	void Update ()
+    {
+        if (playerState.IsEnabled())
         {
-            newVelocity.y = jumpPower;
-            if (rigid.velocity.x == 0)
+            Vector3 newVelocity = rigid.velocity;
+        
+            //Vertical
+            if (Input.GetKeyDown(KeyCode.X) && IsGrounded())
             {
-                StartCoroutine(SetStillJumped());
+                newVelocity.y = jumpPower;
+                if (rigid.velocity.x == 0)
+                {
+                    StartCoroutine(SetStillJumped());
+                }
+                else
+                {
+                    StartCoroutine(SetMoveJumped());
+                }
             }
-            else
-            {
-                StartCoroutine(SetMoveJumped());
-            }
-        }
 
-        rigid.velocity = newVelocity;
-        
-        newVelocity = rigid.velocity;
-        newVelocity.y = sink;
-        if(!Input.GetKey(KeyCode.X) && !IsGrounded())
-        {
             rigid.velocity = newVelocity;
+        
+            newVelocity = rigid.velocity;
+            newVelocity.y = sink;
+            if(!Input.GetKey(KeyCode.X) && !IsGrounded())
+            {
+                rigid.velocity = newVelocity;
+            }
         }
     }
 

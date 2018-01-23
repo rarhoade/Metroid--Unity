@@ -20,27 +20,31 @@ public class PlayerRun : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        Vector3 newVelocity = rigid.velocity;
 
-        //Horizontal
-        float vel = Input.GetAxis("Horizontal") * moveSpeed;
-        Debug.Log(vel);
-        if (Mathf.RoundToInt(vel) != 0)
+        if (playerState.IsEnabled())
         {
-            newVelocity.x += vel;
-            if (vel > 0 && newVelocity.x > moveSpeed)
+            Vector3 newVelocity = rigid.velocity;
+
+            //Horizontal
+            float vel = Input.GetAxis("Horizontal") * moveSpeed;
+            if (Mathf.RoundToInt(vel) != 0)
             {
-                newVelocity.x = moveSpeed;
+                newVelocity.x += vel;
+                if (vel > 0 && newVelocity.x > moveSpeed)
+                {
+                    newVelocity.x = moveSpeed;
+                }
+                else if (vel < 0 && newVelocity.x < -1*moveSpeed)
+                {
+                    newVelocity.x = -moveSpeed;
+                }
+                rigid.velocity = newVelocity;
             }
-            else if (vel < 0 && newVelocity.x < -1*moveSpeed)
+            else if (playerJump.IsGrounded() && !playerState.IsFlying())
             {
-                newVelocity.x = -moveSpeed;
+                rigid.velocity = new Vector3(0, rigid.velocity.y);
             }
-            rigid.velocity = newVelocity;
         }
-        else if (playerJump.IsGrounded() && !playerState.IsFlying())
-        {
-            rigid.velocity = new Vector3(0, rigid.velocity.y);
-        }
+
     }
 }

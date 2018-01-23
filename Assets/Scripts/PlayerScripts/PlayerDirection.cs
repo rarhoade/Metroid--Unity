@@ -19,21 +19,25 @@ public class PlayerDirection : MonoBehaviour {
     // Update is called once per frame
     void Update ()
     {
-        // Horizontal
-        float horizontalAxis = Input.GetAxis("Horizontal");
-        if(facingRight && horizontalAxis < 0)
+        if (playerState.IsEnabled())
         {
-            facingRight = false;
-            this.transform.localScale = new Vector3(-1, 1, 1);
-        }
-        else if (!facingRight && horizontalAxis > 0)
-        {
-            facingRight = true;
-            this.transform.localScale = new Vector3(1, 1, 1);
+            // Horizontal
+            float horizontalAxis = Input.GetAxis("Horizontal");
+            if(facingRight && horizontalAxis < 0)
+            {
+                facingRight = false;
+                this.transform.localScale = new Vector3(-1, 1, 1);
+            }
+            else if (!facingRight && horizontalAxis > 0)
+            {
+                facingRight = true;
+                this.transform.localScale = new Vector3(1, 1, 1);
+            }
+
+            // Vertical
+            holdingUp = Input.GetKey(KeyCode.UpArrow);
         }
 
-        // Vertical
-        holdingUp = Input.GetKey(KeyCode.UpArrow);
 	}
 
     public bool IsFacingRight()

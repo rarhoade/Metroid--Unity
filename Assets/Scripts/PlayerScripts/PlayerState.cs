@@ -12,6 +12,7 @@ public class PlayerState : MonoBehaviour {
     public float bufferLookUp = 0.1f;
 
     private Rigidbody rigid;
+    private bool isEnabled = true;
     private bool flying = false;
     private bool standing = true;
     private bool lookingUp = false;
@@ -45,17 +46,20 @@ public class PlayerState : MonoBehaviour {
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if(isEnabled)
         {
-            if (isMissleOn && playerInventory.HasMisslePower())
+            if (Input.GetKeyDown(KeyCode.Space))
             {
-                Debug.Log("MissleMode is Off");
-                isMissleOn = false;
-            }
-            else if(!isMissleOn && playerInventory.HasMisslePower())
-            {
-                Debug.Log("MissleMode is On");
-                isMissleOn = true;
+                if (isMissleOn && playerInventory.HasMisslePower())
+                {
+                    Debug.Log("MissleMode is Off");
+                    isMissleOn = false;
+                }
+                else if(!isMissleOn && playerInventory.HasMisslePower())
+                {
+                    Debug.Log("MissleMode is On");
+                    isMissleOn = true;
+                }
             }
         }
     }
@@ -63,21 +67,25 @@ public class PlayerState : MonoBehaviour {
     //TODO update states so that you can only morphball in mid air
     void LateUpdate()
     {
-        if (standing && Input.GetKeyDown(KeyCode.DownArrow) && playerInventory.HasMorphBall() && playerJump.IsGrounded())
-        {
-            Standing.SetActive(false);
-            Morphed.SetActive(true);
-            standing = false;
-        }
 
-        if (!standing && (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.X)))
+        if (isEnabled)
         {
-            Standing.SetActive(true);
-            Morphed.SetActive(false);
-            StartCoroutine(SetStanding());
-        }
+            if (standing && Input.GetKeyDown(KeyCode.DownArrow) && playerInventory.HasMorphBall() && playerJump.IsGrounded())
+            {
+                Standing.SetActive(false);
+                Morphed.SetActive(true);
+                standing = false;
+            }
+
+            if (!standing && (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.X)))
+            {
+                Standing.SetActive(true);
+                Morphed.SetActive(false);
+                StartCoroutine(SetStanding());
+            }
         
-        shooting = Input.GetKeyDown(KeyCode.Z);
+            shooting = Input.GetKeyDown(KeyCode.Z);
+        }
 
         running = rigid.velocity.x != 0;
     }
@@ -125,6 +133,16 @@ public class PlayerState : MonoBehaviour {
     public int whichRoom()
     {
         return inRoom;
+    }
+
+    public bool IsEnabled()
+    {
+        return isEnabled;
+    }
+
+    public void SetEnabled(bool en)
+    {
+        isEnabled = en;
     }
 
     IEnumerator SetStanding()

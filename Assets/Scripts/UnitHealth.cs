@@ -24,11 +24,15 @@ public class UnitHealth : MonoBehaviour {
     void Update () {
         if (energy != null)
         {
-            if (Input.GetKeyDown(KeyCode.Alpha1))
+            if (playerState.IsEnabled())
             {
-                invulnerability = !invulnerability;
-                Physics.IgnoreLayerCollision(this.gameObject.layer, 10, invulnerability);
+                if (Input.GetKeyDown(KeyCode.Alpha1))
+                {
+                    invulnerability = !invulnerability;
+                    Physics.IgnoreLayerCollision(this.gameObject.layer, 10, invulnerability);
+                }
             }
+
         }
 	}
 
