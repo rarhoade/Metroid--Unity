@@ -15,10 +15,10 @@ public class PlayerJump : MonoBehaviour {
     private PlayerState playerState;
 
 	// Use this for initialization
-	void Awake () {
+	void Start () {
         rigid = GetComponentInParent<Rigidbody>();
         col = this.GetComponent<Collider>();
-        playerState.GetComponentInParent<PlayerState>();
+        playerState = GetComponentInParent<PlayerState>();
 	}
 	
 	// Update is called once per frame
