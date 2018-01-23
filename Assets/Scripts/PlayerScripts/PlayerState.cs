@@ -12,6 +12,7 @@ public class PlayerState : MonoBehaviour {
     public float bufferLookUp = 0.1f;
 
     private Rigidbody rigid;
+    private bool flying = false;
     private bool standing = true;
     private bool lookingUp = false;
     private bool shooting = false;
@@ -22,11 +23,12 @@ public class PlayerState : MonoBehaviour {
     private Vector2[] roomMins = { new Vector2(0, 15),  new Vector2(80, 15), new Vector2(96, 15),  new Vector2(160,13),  new Vector2(176, 120), new Vector2(192, 58),  new Vector2(208, 60), new Vector2(112, 150), new Vector2(96, 150) };
     private Vector2[] roomMaxs = { new Vector2(79, 29), new Vector2(95, 29), new Vector2(159, 29), new Vector2(175,212), new Vector2(191, 135), new Vector2(207, 212), new Vector2(335, 75), new Vector2(159, 165), new Vector2(111, 165) };
 
-    private void Awake()
+    private void Start()
     {
         rigid = this.GetComponent<Rigidbody>();
         playerInventory = this.GetComponent<PlayerInventory>();
         playerJump = this.GetComponentInChildren<PlayerJump>();
+        StartCoroutine(ResetFlying());
     }
 
     private void FixedUpdate()
@@ -79,6 +81,17 @@ public class PlayerState : MonoBehaviour {
 
         running = rigid.velocity.x != 0;
     }
+
+    public bool IsFlying()
+    {
+        return flying;
+    }
+
+    public void SendFlying()
+    {
+        flying = true;
+    }
+
     public bool IsStanding()
     {
         return standing;
@@ -118,5 +131,22 @@ public class PlayerState : MonoBehaviour {
     {
         yield return new WaitForSeconds(bufferLookUp);
         standing = true;
+    }
+
+    IEnumerator ResetFlying()
+    {
+        while (true)
+        {
+            if (flying)
+            {
+                yield return new WaitForSeconds(0.3f);
+                while (!playerJump.IsGrounded())
+                {
+                    yield return new WaitForFixedUpdate();
+                }
+                flying = false;
+            }
+            yield return new WaitForFixedUpdate();
+        }
     }
 }

@@ -8,9 +8,14 @@ public class PlayerRun : MonoBehaviour {
 
     public float moveSpeed = 5;
 
+    private PlayerState playerState;
+    private PlayerJump playerJump;
+
 	// Use this for initialization
 	void Awake  () {
         rigid = this.GetComponent<Rigidbody>();
+        playerJump = this.GetComponentInChildren<PlayerJump>();
+        playerState = this.GetComponent<PlayerState>();
 	}
 	
 	// Update is called once per frame
@@ -18,8 +23,24 @@ public class PlayerRun : MonoBehaviour {
         Vector3 newVelocity = rigid.velocity;
 
         //Horizontal
-        newVelocity.x = Input.GetAxis("Horizontal") * moveSpeed;
-
-        rigid.velocity = newVelocity;
-	}
+        float vel = Input.GetAxis("Horizontal") * moveSpeed;
+        Debug.Log(vel);
+        if (Mathf.RoundToInt(vel) != 0)
+        {
+            newVelocity.x += vel;
+            if (vel > 0 && newVelocity.x > moveSpeed)
+            {
+                newVelocity.x = moveSpeed;
+            }
+            else if (vel < 0 && newVelocity.x < -1*moveSpeed)
+            {
+                newVelocity.x = -moveSpeed;
+            }
+            rigid.velocity = newVelocity;
+        }
+        else if (playerJump.IsGrounded() && !playerState.IsFlying())
+        {
+            rigid.velocity = new Vector3(0, rigid.velocity.y);
+        }
+    }
 }

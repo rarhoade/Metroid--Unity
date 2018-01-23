@@ -8,6 +8,7 @@ public class UnitHealth : MonoBehaviour {
     public Text energy;
 
 	private Rigidbody rigid;
+    private PlayerState playerState;
 
     public int healthTotal = 30;
     public bool invulnerability = false;
@@ -16,6 +17,7 @@ public class UnitHealth : MonoBehaviour {
 
 	void Start(){
 		rigid = GetComponent<Rigidbody> ();
+        playerState = GetComponent<PlayerState>();
 	}
 
     // Update is called once per frame
@@ -46,6 +48,7 @@ public class UnitHealth : MonoBehaviour {
             //calculate by figuring out the direction of the 
             //Debug.Log("Calc: " + (this.transform.position - otherObj).ToString());
             //rigid.velocity = (this.transform.position - otherObj) * knockback;
+            rigid.velocity = Vector3.zero;
             if (lateralKnockback)
             {
                 if (this.transform.position.x - otherObj.x < 0.3f)
@@ -61,7 +64,12 @@ public class UnitHealth : MonoBehaviour {
             }
             else
             {
-                rigid.AddForce((this.transform.position - otherObj) * knockback);
+                //rigid.AddForce(new Vector3((this.transform.position - otherObj).x * knockback, 10));
+                if(playerState)
+                {
+                    playerState.SendFlying();
+                }
+                rigid.velocity = (this.transform.position - otherObj) * knockback;
             }
 			
             if (healthTotal < 0)
