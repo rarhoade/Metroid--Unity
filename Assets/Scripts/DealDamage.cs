@@ -20,7 +20,6 @@ public class DealDamage : MonoBehaviour {
 	private void dealDamage(GameObject go)
     {
         UnitHealth uh = go.GetComponent<UnitHealth>();
-        Debug.Log(go.name);
         if (uh != null)
         {
             //Debug.Log (otherPost);
