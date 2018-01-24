@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 8cbd80b6603415540bb106d47271a448
-timeCreated: 1516683723
+timeCreated: 1516764111
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -20,6 +20,16 @@ TextureImporter:
     21300026: Ripper_red
     21300028: Ripper_yellow
     21300030: Explode_Pellet
+    21300032: Reo_reg_0
+    21300034: Reo_reg_1
+    21300036: Reo_orange_0
+    21300038: Reo_orange_1
+    21300040: Reo_red_0
+    21300042: Reo_red_1
+    21300044: zeb_reg_0
+    21300046: zeb_reg_1
+    21300048: zeb_red_0
+    21300050: zeb_red_1
   externalObjects: {}
   serializedVersion: 4
   mipmaps:
@@ -387,6 +397,146 @@ TextureImporter:
         y: 68
         width: 8
         height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Reo_reg_0
+      rect:
+        serializedVersion: 2
+        x: 214
+        y: 283
+        width: 24
+        height: 19
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Reo_reg_1
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 283
+        width: 24
+        height: 19
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Reo_orange_0
+      rect:
+        serializedVersion: 2
+        x: 266
+        y: 283
+        width: 24
+        height: 19
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Reo_orange_1
+      rect:
+        serializedVersion: 2
+        x: 292
+        y: 283
+        width: 24
+        height: 19
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Reo_red_0
+      rect:
+        serializedVersion: 2
+        x: 318
+        y: 283
+        width: 24
+        height: 19
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Reo_red_1
+      rect:
+        serializedVersion: 2
+        x: 344
+        y: 283
+        width: 24
+        height: 19
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zeb_reg_0
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 261
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zeb_reg_1
+      rect:
+        serializedVersion: 2
+        x: 258
+        y: 261
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zeb_red_0
+      rect:
+        serializedVersion: 2
+        x: 276
+        y: 261
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: zeb_red_1
+      rect:
+        serializedVersion: 2
+        x: 294
+        y: 261
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
