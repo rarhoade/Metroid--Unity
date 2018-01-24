@@ -179,6 +179,7 @@ public class PlayerState : MonoBehaviour {
             {
                 AudioManager.instance.playSamusRunning();
             }
+            yield return new WaitForEndOfFrame();
         }
     }
 }

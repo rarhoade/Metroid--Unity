@@ -8,7 +8,9 @@ public class AudioManager : MonoBehaviour {
     public AudioClip BackgroundMusic;
     public AudioClip LowHealth;
     public AudioClip SamusRunning;
-    public AudioClip Shooting;
+    public AudioClip BulletSound;
+    public AudioClip MissleSound;
+
 
 
     // Use this for initialization
