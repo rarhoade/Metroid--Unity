@@ -57,13 +57,11 @@ public class UnitHealth : MonoBehaviour {
             //calculate by figuring out the direction of the 
             //Debug.Log("Calc: " + (this.transform.position - otherObj).ToString());
             //rigid.velocity = (this.transform.position - otherObj) * knockback;
-            rigid.velocity = Vector3.zero;
             if (lateralKnockback)
             {
+                rigid.velocity = Vector3.zero;
                 if (this.transform.position.x - otherObj.x < 0.3f)
                 {
-                    Debug.Log("Lol");
-                    Debug.Log(transform.right * -1 * knockback);
                     rigid.AddForce(transform.right * -1 * knockback);
                 }
                 else
@@ -80,6 +78,7 @@ public class UnitHealth : MonoBehaviour {
                 }
                 if (knockback != 0)
                 {
+                    rigid.velocity = Vector3.zero;
                     rigid.velocity = (this.transform.position - otherObj) * knockback;
                 }
             }

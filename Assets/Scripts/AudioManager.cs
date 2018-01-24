@@ -33,7 +33,7 @@ public class AudioManager : MonoBehaviour {
     private void Start()
     {
         aud = Camera.main.gameObject.GetComponent<AudioSource>();
-        StartCoroutine(playBackground());
+        //StartCoroutine(playBackground());
     }
 
     IEnumerator playBackground()
