@@ -6,13 +6,41 @@ public class SetUpDoors : MonoBehaviour {
 
 	public float secondsToWait = 2.0f;
     public float bufferSides = 0.15f;
-	// Use this for initialization
+    public bool isMissleDoor = false;
+    // Use this for initialization
+
+    public int hits = 0;
+    private bool shootable = true;
 
 	public void doorOpenClose()
 	{
 		StartCoroutine (DestroyAndReAppearCenter ());
 		StartCoroutine (DestroyAndReAppearTopAndBottom ());
-	}
+        hits = 0;
+    }
+
+    public void doorWasHit(bool wasMissle)
+    {
+        if (shootable)
+        {
+            if (!isMissleDoor || hits >= 4)
+            {
+                doorOpenClose();
+            }
+            else if (wasMissle)
+            {
+                hits++;
+                StartCoroutine(iframesShoot());
+            }
+        }
+    }
+
+    IEnumerator iframesShoot()
+    {
+        shootable = false;
+        yield return new WaitForSeconds(0.1f);
+        shootable = true;
+    }
 
 	IEnumerator DestroyAndReAppearCenter()
 	{
