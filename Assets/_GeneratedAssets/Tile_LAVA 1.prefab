@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 212326827989854708}
   - component: {fileID: 65743398254604022}
   - component: {fileID: 114821727288762648}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Tile_LAVA 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -97,7 +97,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1009674083
-  m_SortingLayer: -1
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300046, guid: 28b520d62c7de564f81a2026499d394d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

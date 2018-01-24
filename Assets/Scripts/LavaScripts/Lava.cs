@@ -19,4 +19,12 @@ public class Lava : MonoBehaviour {
             parent.hitPlayer(uh);
         }
     }
+    private void OnTriggerStay(Collider collision)
+    {
+        UnitHealth uh = collision.gameObject.GetComponent<UnitHealth>();
+        if (uh != null)
+        {
+            parent.hitPlayer(uh);
+        }
+    }
 }

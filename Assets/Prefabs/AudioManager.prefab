@@ -59,5 +59,6 @@ MonoBehaviour:
   HealthPickup: {fileID: 8300000, guid: e47c3287757862f4686224467b981dfb, type: 3}
   MisslePickup: {fileID: 8300000, guid: ed481519f20e67f488485280988cf12d, type: 3}
   PowerupPickup: {fileID: 8300000, guid: ead06d4e55d75a34ab189c8814b57bae, type: 3}
+  SamusDamaged: {fileID: 8300000, guid: fc17058228428f04ea4435885d79aacd, type: 3}
   EnemyDamaged: {fileID: 8300000, guid: 4ddd7a7e8e567544a931d1884ead72c9, type: 3}
   DoorSound: {fileID: 8300000, guid: bb0513c8716cc884cbe6b2fe2824be5d, type: 3}

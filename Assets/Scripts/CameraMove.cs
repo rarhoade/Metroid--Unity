@@ -13,8 +13,8 @@ public class CameraMove : MonoBehaviour {
     private int velo;
     private PlayerState ps;
     private Vector2 vel;
-    private Vector2[] minBounds = { new Vector2(21.5f,22), new Vector2(87.5f,22), new Vector2(103.5f, 22), new Vector2(167.5f, 20.5f),  new Vector2(183.5f, 127.5f), new Vector2(199.5f, 65.5f),  new Vector2(215.5f, 67.5f), new Vector2(119.5f, 157.5f), new Vector2(103.5f, 157.5f) };
-    private Vector2[] maxBounds = { new Vector2(71.5f,22), new Vector2(87.5f,22), new Vector2(151.5f, 22), new Vector2(167.5f, 204.5f), new Vector2(183.5f, 127.5f), new Vector2(199.5f, 219.5f), new Vector2(327.5f, 67.5f), new Vector2(151.5f, 157.5f), new Vector2(103.5f, 157.5f) };
+    private Vector2[] minBounds = { new Vector2(21.5f,22), new Vector2(87.5f,22), new Vector2(103.5f, 22), new Vector2(167.5f, 20.5f),  new Vector2(183.5f, 127.5f), new Vector2(199.5f, 65.5f),  new Vector2(215.5f, 67f), new Vector2(119.5f, 157.5f), new Vector2(103.5f, 157.5f) };
+    private Vector2[] maxBounds = { new Vector2(71.5f,22), new Vector2(87.5f,22), new Vector2(151.5f, 22), new Vector2(167.5f, 204.5f), new Vector2(183.5f, 127.5f), new Vector2(199.5f, 219.5f), new Vector2(327.5f, 67f), new Vector2(151.5f, 157.5f), new Vector2(103.5f, 157.5f) };
 	private IDictionary<string, int> map = new Dictionary<string, int>();
 
     // Use this for initialization

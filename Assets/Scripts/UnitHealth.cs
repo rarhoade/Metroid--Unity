@@ -56,8 +56,9 @@ public class UnitHealth : MonoBehaviour {
             //Debug.Log("Striker " + otherObj.ToString());
             //Debug.Log("My Pos: " + this.gameObject.transform.position.ToString());
 
-
+            Debug.Log("Health Tot: " + healthTotal + " Taking: " + damage + " energy is " + energy==null);
             healthTotal -= damage;
+            Debug.Log("Outcome: " + healthTotal);
             //NOT WORKING KNOCKBACK
             //execute knockback
             //calculate by figuring out the direction of the 
@@ -97,7 +98,6 @@ public class UnitHealth : MonoBehaviour {
             if (energy != null)
             {
                 energy.text = healthTotal.ToString();
-                AudioManager.instance.playSamusHit();
             }
             //TODO implement knockback force (zero out velocity then add force)
             if (blink > 0)
@@ -105,6 +105,7 @@ public class UnitHealth : MonoBehaviour {
                 if(allowInvulnerability)
                 {
                     StartCoroutine(IFrames());
+                    AudioManager.instance.playSamusHit();
                 }
             }
             else

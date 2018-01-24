@@ -15,6 +15,7 @@ public class LavaHolderObj : MonoBehaviour {
         if(!hittingPlayerThisFrame)
         {
             hittingPlayerThisFrame = true;
+            Debug.Log("HIT PLAYER");
             uh.TakeDamage(1, 0, transform.position, true, false);
         }
     }
