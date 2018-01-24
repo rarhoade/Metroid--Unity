@@ -26,10 +26,10 @@ public class ZoomerMovement : MonoBehaviour {
 
     void rayCastCheck()
     {
-        Debug.DrawRay(transform.position, -transform.up * 0.65f, Color.white);
+        Debug.DrawRay(transform.position, -transform.up * 0.55f, Color.white);
         if (!Physics.Raycast(transform.position, -transform.up, 0.65f))
         {
-            transform.position = transform.position + (transform.right - transform.up) * 0.6f;
+            transform.position = transform.position + (transform.right - transform.up) * 0.5f;
             transform.Rotate(Vector3.forward * -90);
             rigid.velocity = transform.right * zoomerSpeed;
             //Debug.Log("Velocity:" + rigid.velocity);

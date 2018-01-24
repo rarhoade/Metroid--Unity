@@ -40,7 +40,7 @@ Transform:
   m_GameObject: {fileID: 1617841020353158}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 39.11007, y: 22.40463, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.9, y: 0.9, z: 0.9}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -103,6 +103,7 @@ MonoBehaviour:
   invulnerability: 0
   numberOfBlinks: 0
   blink: 0
+  lowHTime: 0.35
 --- !u!135 &135139554933043672
 SphereCollider:
   m_ObjectHideFlags: 1
