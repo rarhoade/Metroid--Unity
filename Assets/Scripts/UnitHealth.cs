@@ -91,6 +91,7 @@ public class UnitHealth : MonoBehaviour {
             if (energy != null)
             {
                 energy.text = healthTotal.ToString();
+                AudioManager.instance.playSamusHit();
             }
             //TODO implement knockback force (zero out velocity then add force)
             if (blink > 0)
@@ -166,6 +167,10 @@ public class UnitHealth : MonoBehaviour {
             if(!invulnerability && healthTotal <= 15)
             {
                 AudioManager.instance.playLowHealth();
+            }
+            else
+            {
+                AudioManager.instance.stopLowHealth();
             }
             yield return new WaitForSeconds(lowHTime);
         }

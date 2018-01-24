@@ -52,10 +52,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   BackgroundMusic: {fileID: 8300000, guid: cdc3c74f177c3ad40bc68c633563a530, type: 3}
-  LowHealth: {fileID: 0}
+  LowHealth: {fileID: 8300000, guid: 72367a4cb757de54798f8f21da4ea51f, type: 3}
   SamusRunning: {fileID: 8300000, guid: c0cb0e40eb7caee4eacc7df971600130, type: 3}
   SamusJumping: {fileID: 8300000, guid: 33eb32bcdd31d774284c0a8b76e38c92, type: 3}
-  HealthPickup: {fileID: 8300000, guid: e47c3287757862f4686224467b981dfb, type: 3}
-  EnemyDamaged: {fileID: 8300000, guid: 4ddd7a7e8e567544a931d1884ead72c9, type: 3}
-  PowerupPickup: {fileID: 8300000, guid: ead06d4e55d75a34ab189c8814b57bae, type: 3}
   runLockoutTime: 0.2
+  HealthPickup: {fileID: 8300000, guid: e47c3287757862f4686224467b981dfb, type: 3}
+  MisslePickup: {fileID: 8300000, guid: ed481519f20e67f488485280988cf12d, type: 3}
+  PowerupPickup: {fileID: 8300000, guid: ead06d4e55d75a34ab189c8814b57bae, type: 3}
+  EnemyDamaged: {fileID: 8300000, guid: 4ddd7a7e8e567544a931d1884ead72c9, type: 3}
+  DoorSound: {fileID: 8300000, guid: bb0513c8716cc884cbe6b2fe2824be5d, type: 3}

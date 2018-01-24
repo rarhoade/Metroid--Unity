@@ -7,6 +7,7 @@ public class PlayerJump : MonoBehaviour {
     Rigidbody rigid;
     Collider col;
     float moveLeftRightJump;
+    public bool isStandingForm = true;
     public float jumpPower = 12;
     public float sink = -10;
     public float boxSizes = 5;
@@ -24,7 +25,7 @@ public class PlayerJump : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
     {
-        if (playerState.IsEnabled())
+        if (playerState.IsEnabled() && isStandingForm)
         {
             Vector3 newVelocity = rigid.velocity;
         
@@ -55,7 +56,7 @@ public class PlayerJump : MonoBehaviour {
 
     private void FixedUpdate()
     {
-        if (!IsGrounded())
+        if (!IsGrounded() && isStandingForm)
         {
             if (moveJumped)
             {
@@ -96,6 +97,11 @@ public class PlayerJump : MonoBehaviour {
         float radius = col.bounds.extents.x - .05f;
 
         float fullDistance = col.bounds.extents.y + 0.05f;
+        if (!isStandingForm)
+        {
+            fullDistance += 0.15f;
+        }
+        Debug.DrawRay(col.bounds.center, Vector3.down * fullDistance, Color.blue);
 
         if (Physics.SphereCast(ray, radius, fullDistance))
             return true;

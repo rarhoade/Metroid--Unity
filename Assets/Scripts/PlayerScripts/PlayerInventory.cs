@@ -7,9 +7,9 @@ public class PlayerInventory : MonoBehaviour {
 
     public Text missleCount;
 
+    private PlayerState playerState;
 	private UnitHealth uh;
-
-	AudioSource pickUpNoise;
+    
     public bool hasMorphBall = false;
     public bool hasLongShot = false;
     public bool hasMisslePower = false;
@@ -19,7 +19,7 @@ public class PlayerInventory : MonoBehaviour {
     {
         missles = 3;
         uh = GetComponent<UnitHealth>();
-		pickUpNoise = GetComponent<AudioSource> ();
+        playerState = GetComponent<PlayerState>();
     }
 
     private void Update()
@@ -63,6 +63,7 @@ public class PlayerInventory : MonoBehaviour {
 
     public void addMissles()
     {
+        AudioManager.instance.playMisslePickup();
         missles++;
         if (!uh.IsInvincable())
         {
@@ -101,12 +102,13 @@ public class PlayerInventory : MonoBehaviour {
     }
 
 	private IEnumerator CollectAndPause(){
-        AudioManager.instance.playPowerupPickup();
+        float stopTime = AudioManager.instance.playPowerupPickup();
+        Debug.Log(stopTime);
+        playerState.SetEnabled(false);
 		Time.timeScale = 0.001f;
-		float pauseEnder = Time.realtimeSinceStartup + 1.0f;
-		while (pauseEnder >Time.realtimeSinceStartup) {
-			yield return 0;
-		}
-		Time.timeScale = 1;
+        yield return new WaitForSecondsRealtime(stopTime-.9f);
+        playerState.SetEnabled(true);
+        Time.timeScale = 1f;
+        yield break;
 	}
 }

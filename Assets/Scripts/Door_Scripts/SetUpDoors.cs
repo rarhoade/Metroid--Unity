@@ -47,6 +47,7 @@ public class SetUpDoors : MonoBehaviour {
 		this.transform.GetChild (1).gameObject.SetActive (false);
 		yield return new WaitForSeconds (secondsToWait + bufferSides);
 		this.transform.GetChild (1).gameObject.SetActive (true);
+        AudioManager.instance.playDoorSound();
 	}
 
 	IEnumerator DestroyAndReAppearTopAndBottom()
@@ -54,7 +55,8 @@ public class SetUpDoors : MonoBehaviour {
 		yield return new WaitForSeconds (bufferSides);
 		this.transform.GetChild (0).gameObject.SetActive (false);
 		this.transform.GetChild (2).gameObject.SetActive (false);
-		yield return new WaitForSeconds (secondsToWait );
+        AudioManager.instance.playDoorSound();
+		yield return new WaitForSeconds (secondsToWait - bufferSides);
 		this.transform.GetChild (0).gameObject.SetActive (true);
 		this.transform.GetChild (2).gameObject.SetActive (true);
 	}
