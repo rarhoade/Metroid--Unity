@@ -20,7 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4576406447743886}
   - component: {fileID: 212961959693277866}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Reo
   m_TagString: Untagged
   m_Icon: {fileID: 0}

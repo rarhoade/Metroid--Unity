@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4633082694284082}
   - component: {fileID: 212482071928100610}
   - component: {fileID: 65344012011486512}
-  m_Layer: 8
+  m_Layer: 11
   m_Name: LongShotPowerUp
   m_TagString: LongShot
   m_Icon: {fileID: 0}

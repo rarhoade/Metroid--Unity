@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerState : MonoBehaviour {
-
     PlayerInventory playerInventory;
     PlayerJump playerJump;
 
@@ -30,6 +29,7 @@ public class PlayerState : MonoBehaviour {
         playerInventory = this.GetComponent<PlayerInventory>();
         playerJump = this.GetComponentInChildren<PlayerJump>();
         StartCoroutine(ResetFlying());
+        StartCoroutine(RunningSound());
     }
 
     private void FixedUpdate()
@@ -168,6 +168,17 @@ public class PlayerState : MonoBehaviour {
                 flying = false;
             }
             yield return new WaitForFixedUpdate();
+        }
+    }
+
+    IEnumerator RunningSound()
+    {
+        while (true)
+        {
+            if (isEnabled && IsRunning() && playerJump.IsGrounded())
+            {
+                AudioManager.instance.playSamusRunning();
+            }
         }
     }
 }
