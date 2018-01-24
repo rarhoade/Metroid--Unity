@@ -14,8 +14,10 @@ public class DestroyOnCollisionEnter : MonoBehaviour {
 
 	private void OnCollisionEnter(Collision other)
     {
-        if(rigid.velocity != Vector3.zero && (other.gameObject.name != "Standing" || other.gameObject.name != "Morphed"))
+        if (rigid.velocity != Vector3.zero && (other.gameObject.layer == 0) && GetComponent<SkreeMovement>().getHasFallen())
         {
+            Debug.Log(other.gameObject.name + " " + other.gameObject.transform.localPosition);
+            //this.transform.position = other.gameObject.transform.position;
             StartCoroutine(WaitAndDestroy());
         }
     }
@@ -24,6 +26,6 @@ public class DestroyOnCollisionEnter : MonoBehaviour {
     {
         rigid.velocity = Vector3.zero;
         yield return new WaitForSeconds(timeTillDeath);
-        Destroy(this.gameObject);
+        this.GetComponent<ExplodeOnDestroy>().ExplodeDestroy();
     }
 }

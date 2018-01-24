@@ -60,6 +60,7 @@ public class PlayerWeapon : MonoBehaviour {
                 }
                 else
                 {
+                    bulletInstance.GetComponent<SpriteRenderer>().flipX = true;
                     bulletInstance.GetComponent<Rigidbody>().velocity = Vector3.left * firingSpeed;
                 }
             }

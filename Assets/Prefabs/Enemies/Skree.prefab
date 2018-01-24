@@ -90,8 +90,9 @@ MonoBehaviour:
   energy: {fileID: 0}
   healthTotal: 30
   invulnerability: 0
-  numberOfBlinks: 2
+  numberOfBlinks: 0
   blink: 0.4
+  lowHTime: 0.35
 --- !u!114 &114188875117531716
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -105,8 +106,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   explodeBulletPrefab: {fileID: 1620368099112398, guid: 5b2cfe48472d6fa458f18f54ac138772,
     type: 2}
-  firingSpeed: 0
-  posOffset: 0
+  firingSpeed: 4
+  posOffset: 0.5
 --- !u!114 &114225454133484512
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -136,7 +137,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timeTillDeath: 1
-  rigid: {fileID: 0}
+  rigid: {fileID: 54987486611931122}
 --- !u!136 &136519695329302392
 CapsuleCollider:
   m_ObjectHideFlags: 1
@@ -146,8 +147,8 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 1.5
+  m_Radius: 0.38
+  m_Height: 1.38
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!212 &212581881190578950

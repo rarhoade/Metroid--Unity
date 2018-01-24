@@ -7,7 +7,7 @@ public class ExplodeOnDestroy : MonoBehaviour {
     public float firingSpeed;
     public float posOffset;
     // Use this for initialization
-    private void OnDestroy()
+    public void ExplodeDestroy()
     {
         GameObject pellet_left = GameObject.Instantiate(explodeBulletPrefab);
         pellet_left.transform.position = new Vector3(this.transform.position.x - posOffset, this.transform.position.y, this.transform.position.z);
@@ -32,7 +32,7 @@ public class ExplodeOnDestroy : MonoBehaviour {
         GameObject pellet_right = GameObject.Instantiate(explodeBulletPrefab);
         pellet_right.transform.position = new Vector3(this.transform.position.x + posOffset, this.transform.position.y, this.transform.position.z);
         pellet_right.GetComponent<Rigidbody>().velocity = Vector3.right * firingSpeed;
-
-        Debug.Log("I WAS KILLLED");
+        Destroy(this.gameObject);
+        //Debug.Log("I WAS KILLLED");
     }
 }
