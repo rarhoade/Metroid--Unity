@@ -79,9 +79,12 @@ public class PlayerState : MonoBehaviour {
 
             if (!standing && (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.X)))
             {
-                Standing.SetActive(true);
-                Morphed.SetActive(false);
-                StartCoroutine(SetStanding());
+                if(!Physics.Raycast(transform.GetChild(1).transform.position, Vector3.up, 0.75f))
+                {
+                    Standing.SetActive(true);
+                    Morphed.SetActive(false);
+                    StartCoroutine(SetStanding());
+                }
             }
         
             shooting = Input.GetKeyDown(KeyCode.Z);

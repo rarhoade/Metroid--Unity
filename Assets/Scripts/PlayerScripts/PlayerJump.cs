@@ -6,7 +6,7 @@ public class PlayerJump : MonoBehaviour {
 
     Rigidbody rigid;
     Collider col;
-
+    float moveLeftRightJump;
     public float jumpPower = 12;
     public float sink = -10;
     public float boxSizes = 5;
@@ -56,7 +56,22 @@ public class PlayerJump : MonoBehaviour {
     private void FixedUpdate()
     {
         if (!IsGrounded())
-        { 
+        {
+            if (moveJumped)
+            {
+                if(rigid.velocity.x < 0)
+                {
+                    moveLeftRightJump = -0.5f;
+                }
+                else if (rigid.velocity.x > 0)
+                {
+                    moveLeftRightJump = 0.5f;
+                }
+                else
+                {
+                    rigid.velocity = new Vector3(moveLeftRightJump, rigid.velocity.y, 0);
+                }
+            }
             if(Physics.Raycast(transform.position, Vector3.left, 0.5f))
             {
                 if(Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A))
