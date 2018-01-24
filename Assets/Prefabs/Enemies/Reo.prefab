@@ -20,6 +20,11 @@ GameObject:
   m_Component:
   - component: {fileID: 4576406447743886}
   - component: {fileID: 212961959693277866}
+  - component: {fileID: 114449159958815962}
+  - component: {fileID: 114677889452785982}
+  - component: {fileID: 114740717237363802}
+  - component: {fileID: 54220257984435400}
+  - component: {fileID: 135722891081849678}
   m_Layer: 10
   m_Name: Reo
   m_TagString: Untagged
@@ -40,6 +45,76 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!54 &54220257984435400
+Rigidbody:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1650552201374348}
+  serializedVersion: 2
+  m_Mass: 1000
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 120
+  m_CollisionDetection: 0
+--- !u!114 &114449159958815962
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1650552201374348}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac8c19a457ef08648b65a828d0c70abb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  energy: {fileID: 0}
+  healthTotal: 30
+  invulnerability: 0
+  numberOfBlinks: 2
+  blink: 0.4
+  lowHTime: 0.35
+--- !u!114 &114677889452785982
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1650552201374348}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 669aacd3d2d192f4e8ffcad753a6d791, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  myDamage: 10
+  knockback: 10
+  lateralKnockback: 0
+--- !u!114 &114740717237363802
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1650552201374348}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c70a2e4c091f42459aca7d1ddfa9d17, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  reoSpeed: 10
+--- !u!135 &135722891081849678
+SphereCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1650552201374348}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.75
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!212 &212961959693277866
 SpriteRenderer:
   m_ObjectHideFlags: 1
