@@ -14,10 +14,15 @@ public class UnitHealth : MonoBehaviour {
     public bool invulnerability = false;
     public int numberOfBlinks = 2;
     public float blink = 0.4f;
+    public float lowHTime=0.35f;
 
 	void Start(){
 		rigid = GetComponent<Rigidbody> ();
         playerState = GetComponent<PlayerState>();
+        if (playerState != null)
+        {
+            StartCoroutine(lowHealth());
+        }
 	}
 
     // Update is called once per frame
@@ -73,7 +78,10 @@ public class UnitHealth : MonoBehaviour {
                 {
                     playerState.SendFlying();
                 }
-                rigid.velocity = (this.transform.position - otherObj) * knockback;
+                if (knockback != 0)
+                {
+                    rigid.velocity = (this.transform.position - otherObj) * knockback;
+                }
             }
 			
             if (healthTotal < 0)
@@ -149,5 +157,17 @@ public class UnitHealth : MonoBehaviour {
     public bool IsInvincable()
     {
         return invulnerability;
+    }
+
+    IEnumerator lowHealth()
+    {
+        while(true)
+        {
+            if(!invulnerability && healthTotal <= 15)
+            {
+                AudioManager.instance.playLowHealth();
+            }
+            yield return new WaitForSeconds(lowHTime);
+        }
     }
 }
