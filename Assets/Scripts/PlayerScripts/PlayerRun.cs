@@ -40,7 +40,7 @@ public class PlayerRun : MonoBehaviour {
                 }
                 rigid.velocity = newVelocity;
             }
-            else if (playerJump.IsGrounded() && !playerState.IsFlying())
+            else if ((playerJump.IsGrounded() && !playerState.IsFlying()) || (!playerJump.IsGrounded() && playerJump.IsStillJumped()))
             {
                 rigid.velocity = new Vector3(0, rigid.velocity.y);
             }

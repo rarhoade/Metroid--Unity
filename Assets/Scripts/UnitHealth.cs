@@ -152,6 +152,7 @@ public class UnitHealth : MonoBehaviour {
 		{
 			energy.text = healthTotal.ToString();
 		}
+        AudioManager.instance.playHealthPickup();
 	}
     
     public bool IsInvincable()

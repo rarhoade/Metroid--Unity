@@ -115,6 +115,7 @@ public class PlayerJump : MonoBehaviour {
 
     IEnumerator SetStillJumped()
     {
+        AudioManager.instance.playJump();
         yield return new WaitForSeconds(0.1f);
         stillJumped = true; 
         StartCoroutine(Falling());
@@ -122,6 +123,7 @@ public class PlayerJump : MonoBehaviour {
 
     IEnumerator SetMoveJumped()
     {
+        AudioManager.instance.playJump();
         yield return new WaitForSeconds(0.1f);
         moveJumped = true;
         StartCoroutine(Falling());

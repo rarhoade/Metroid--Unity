@@ -8,6 +8,8 @@ public class AudioManager : MonoBehaviour {
     public AudioClip BackgroundMusic;
     public AudioClip LowHealth;
     public AudioClip SamusRunning;
+    public AudioClip SamusJumping;
+    public AudioClip HealthPickup;
     public float runLockoutTime;
 
 
@@ -31,7 +33,7 @@ public class AudioManager : MonoBehaviour {
     private void Start()
     {
         aud = Camera.main.gameObject.GetComponent<AudioSource>();
-        //StartCoroutine(playBackground());
+        StartCoroutine(playBackground());
     }
 
     IEnumerator playBackground()
@@ -58,8 +60,17 @@ public class AudioManager : MonoBehaviour {
         runForestrun = null;
     }
 
+    public void playJump()
+    {
+        aud.PlayOneShot(SamusJumping);
+    }
     public void playLowHealth()
     {
         aud.PlayOneShot(LowHealth);
+    }
+
+    public void playHealthPickup()
+    {
+        aud.PlayOneShot(HealthPickup);
     }
 }
