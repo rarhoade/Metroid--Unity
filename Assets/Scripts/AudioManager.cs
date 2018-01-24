@@ -5,17 +5,25 @@ using UnityEngine;
 public class AudioManager : MonoBehaviour {
     public static AudioManager instance = null;
 
+
     public AudioClip BackgroundMusic;
     public AudioClip LowHealth;
     public AudioClip SamusRunning;
     public AudioClip SamusJumping;
     public AudioClip HealthPickup;
+    public AudioClip EnemyDamaged;
+    public AudioClip PowerupPickup;
     public float runLockoutTime;
+
+    private AudioSource player;
+    private AudioSource enemy;
+    private AudioSource background;
+    private AudioSource SFX;
 
 
     Coroutine runForestrun;
+    Coroutine bg;
 
-    private AudioSource aud;
 
     // Use this for initialization
     void Awake()
@@ -32,15 +40,19 @@ public class AudioManager : MonoBehaviour {
 
     private void Start()
     {
-        aud = Camera.main.gameObject.GetComponent<AudioSource>();
-        //StartCoroutine(playBackground());
+        AudioSource[] sources = Camera.main.gameObject.GetComponents<AudioSource>();
+        player = sources[0];
+        enemy = sources[1];
+        background = sources[2];
+        SFX = sources[3];
+        bg = StartCoroutine(playBackground());
     }
 
     IEnumerator playBackground()
     {
         while(true)
         {
-            aud.PlayOneShot(BackgroundMusic);
+            background.PlayOneShot(BackgroundMusic);
             yield return new WaitForSeconds(BackgroundMusic.length);
         }
     }
@@ -55,22 +67,30 @@ public class AudioManager : MonoBehaviour {
 
     IEnumerator runSamus()
     {
-        aud.PlayOneShot(SamusRunning);
+        player.PlayOneShot(SamusRunning);
         yield return new WaitForSeconds(runLockoutTime);
         runForestrun = null;
     }
 
     public void playJump()
     {
-        aud.PlayOneShot(SamusJumping);
+        player.PlayOneShot(SamusJumping);
     }
     public void playLowHealth()
     {
-        aud.PlayOneShot(LowHealth);
+        background.PlayOneShot(LowHealth);
     }
 
     public void playHealthPickup()
     {
-        aud.PlayOneShot(HealthPickup);
+        SFX.PlayOneShot(HealthPickup);
+    }
+
+    public void playPowerupPickup()
+    {
+        StopCoroutine(bg);
+        background.Stop();
+        SFX.PlayOneShot(PowerupPickup);
+        bg = StartCoroutine(playBackground());
     }
 }

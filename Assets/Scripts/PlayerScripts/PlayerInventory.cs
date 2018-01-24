@@ -101,7 +101,7 @@ public class PlayerInventory : MonoBehaviour {
     }
 
 	private IEnumerator CollectAndPause(){
-        pickUpNoise.Play();
+        AudioManager.instance.playPowerupPickup();
 		Time.timeScale = 0.001f;
 		float pauseEnder = Time.realtimeSinceStartup + 1.0f;
 		while (pauseEnder >Time.realtimeSinceStartup) {
