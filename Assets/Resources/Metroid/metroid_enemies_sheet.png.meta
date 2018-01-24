@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 8cbd80b6603415540bb106d47271a448
-timeCreated: 1516764111
+timeCreated: 1516769180
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -30,6 +30,7 @@ TextureImporter:
     21300046: zeb_reg_1
     21300048: zeb_red_0
     21300050: zeb_red_1
+    21300052: Zoomer_Red_Upright
   externalObjects: {}
   serializedVersion: 4
   mipmaps:
@@ -496,7 +497,7 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -510,7 +511,7 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -524,7 +525,7 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -537,6 +538,20 @@ TextureImporter:
         y: 261
         width: 16
         height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Zoomer_Red_Upright
+      rect:
+        serializedVersion: 2
+        x: 145
+        y: 316
+        width: 16
+        height: 14
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}

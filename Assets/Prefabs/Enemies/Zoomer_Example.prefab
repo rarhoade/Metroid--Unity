@@ -39,7 +39,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1617841020353158}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 39.11007, y: 22.40463, z: -9.931641}
+  m_LocalPosition: {x: 39.11007, y: 22.40463, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -85,15 +85,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a804e1518e895c41a4fe68455b08246, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spriteRend: {fileID: 0}
-  currentFace: 1
-  zoomerSpeed: 1.5
-  rigid: {fileID: 54754329916864934}
-  zoomerSprites:
-  - {fileID: 21300000, guid: 8cbd80b6603415540bb106d47271a448, type: 3}
-  - {fileID: 21300004, guid: 8cbd80b6603415540bb106d47271a448, type: 3}
-  - {fileID: 21300008, guid: 8cbd80b6603415540bb106d47271a448, type: 3}
-  - {fileID: 21300012, guid: 8cbd80b6603415540bb106d47271a448, type: 3}
+  startVel: {x: 1, y: 0, z: 0}
+  zoomerSpeed: 1.58
 --- !u!114 &114326803152056002
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -156,7 +149,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300004, guid: 8cbd80b6603415540bb106d47271a448, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 8cbd80b6603415540bb106d47271a448, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

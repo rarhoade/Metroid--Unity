@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 54228155717602218}
   - component: {fileID: 114317521950985790}
   - component: {fileID: 114434671273490170}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Ripper
   m_TagString: Untagged
   m_Icon: {fileID: 0}

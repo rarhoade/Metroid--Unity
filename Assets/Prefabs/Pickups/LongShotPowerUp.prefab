@@ -20,7 +20,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4633082694284082}
   - component: {fileID: 212482071928100610}
-  m_Layer: 11
+  - component: {fileID: 65344012011486512}
+  m_Layer: 8
   m_Name: LongShotPowerUp
   m_TagString: LongShot
   m_Icon: {fileID: 0}
@@ -33,13 +34,25 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1287788445312688}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 38.756924, y: 20.346167, z: -0.10983917}
-  m_LocalScale: {x: 1.5, y: 1.5, z: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 35.55, y: 2.1, z: 0}
+  m_LocalScale: {x: 5, y: 5, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &65344012011486512
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1287788445312688}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.17, y: 0.17, z: 0.38}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!212 &212482071928100610
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -74,8 +87,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300010, guid: ce94f51f558bd47eca28c0601d6aa21e, type: 3}
-  m_Color: {r: 0.86206913, g: 0, b: 1, a: 1}
+  m_Sprite: {fileID: 21300002, guid: 6d4869cc9b9be294c9aa1b0b9a73694f, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
