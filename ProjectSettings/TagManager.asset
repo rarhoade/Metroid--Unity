@@ -43,6 +43,9 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Lava
+    uniqueID: 3285293213
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0

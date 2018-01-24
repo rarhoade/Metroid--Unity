@@ -41,7 +41,13 @@ public class UnitHealth : MonoBehaviour {
         }
 	}
 
-	public void TakeDamage(int damage, float knockback, Vector3 otherObj, bool lateralKnockback)
+    public void TakeDamage(int damage, float knockback, Vector3 otherObj, bool lateralKnockback)
+    {
+        TakeDamage(damage, knockback, otherObj, lateralKnockback, true);
+    }
+
+
+    public void TakeDamage(int damage, float knockback, Vector3 otherObj, bool lateralKnockback, bool allowInvulnerability)
     {
         if (!invulnerability)
         {
@@ -91,11 +97,15 @@ public class UnitHealth : MonoBehaviour {
             if (energy != null)
             {
                 energy.text = healthTotal.ToString();
+                AudioManager.instance.playSamusHit();
             }
             //TODO implement knockback force (zero out velocity then add force)
             if (blink > 0)
             {
-                StartCoroutine(IFrames());
+                if(allowInvulnerability)
+                {
+                    StartCoroutine(IFrames());
+                }
             }
             else
             {
@@ -166,6 +176,10 @@ public class UnitHealth : MonoBehaviour {
             if(!invulnerability && healthTotal <= 15)
             {
                 AudioManager.instance.playLowHealth();
+            }
+            else
+            {
+                AudioManager.instance.stopLowHealth();
             }
             yield return new WaitForSeconds(lowHTime);
         }

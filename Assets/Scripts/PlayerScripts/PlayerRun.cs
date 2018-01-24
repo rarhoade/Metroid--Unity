@@ -23,6 +23,7 @@ public class PlayerRun : MonoBehaviour {
 
         if (playerState.IsEnabled())
         {
+            playerJump = this.GetComponentInChildren<PlayerJump>();
             Vector3 newVelocity = rigid.velocity;
 
             //Horizontal

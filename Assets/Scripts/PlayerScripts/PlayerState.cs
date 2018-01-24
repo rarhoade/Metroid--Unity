@@ -70,6 +70,7 @@ public class PlayerState : MonoBehaviour {
 
         if (isEnabled)
         {
+            playerJump = GetComponentInChildren<PlayerJump>();
             if (standing && Input.GetKeyDown(KeyCode.DownArrow) && playerInventory.HasMorphBall() && playerJump.IsGrounded())
             {
                 Standing.SetActive(false);
@@ -160,7 +161,8 @@ public class PlayerState : MonoBehaviour {
         {
             if (flying)
             {
-                yield return new WaitForSeconds(0.3f);
+                playerJump = GetComponentInChildren<PlayerJump>();
+                yield return new WaitForSeconds(0.2f);
                 while (!playerJump.IsGrounded())
                 {
                     yield return new WaitForFixedUpdate();

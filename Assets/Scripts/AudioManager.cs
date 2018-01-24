@@ -10,16 +10,22 @@ public class AudioManager : MonoBehaviour {
     public AudioClip LowHealth;
     public AudioClip SamusRunning;
     public AudioClip SamusJumping;
-    public AudioClip HealthPickup;
-    public AudioClip EnemyDamaged;
-    public AudioClip PowerupPickup;
     public float runLockoutTime;
+
+    public AudioClip HealthPickup;
+    public AudioClip MisslePickup;
+    public AudioClip PowerupPickup;
+
+    public AudioClip SamusDamaged;
+    public AudioClip EnemyDamaged;
+    public AudioClip DoorSound;
 
     private AudioSource player;
     private AudioSource enemy;
     private AudioSource background;
     private AudioSource SFX;
-
+    private AudioSource idiot;
+    private Coroutine low;
 
     Coroutine runForestrun;
     Coroutine bg;
@@ -45,12 +51,13 @@ public class AudioManager : MonoBehaviour {
         enemy = sources[1];
         background = sources[2];
         SFX = sources[3];
+        idiot = sources[4];
         bg = StartCoroutine(playBackground());
     }
 
     IEnumerator playBackground()
     {
-        while(true)
+        while (true)
         {
             background.PlayOneShot(BackgroundMusic);
             yield return new WaitForSeconds(BackgroundMusic.length);
@@ -76,9 +83,37 @@ public class AudioManager : MonoBehaviour {
     {
         player.PlayOneShot(SamusJumping);
     }
+
     public void playLowHealth()
     {
-        background.PlayOneShot(LowHealth);
+        if (low == null)
+        {
+            low = StartCoroutine(lowHealth());
+        }
+    }
+
+    public void stopLowHealth()
+    {
+        if (low != null)
+        {
+            StopCoroutine(low);
+            idiot.Stop();
+            low = null;
+        }
+    }
+
+    IEnumerator lowHealth()
+    {
+        while (true)
+        {
+            idiot.PlayOneShot(LowHealth);
+            yield return new WaitForSeconds(LowHealth.length-0.4f);
+        }
+    }
+
+    public void playSamusHit()
+    {
+        SFX.PlayOneShot(SamusDamaged);
     }
 
     public void playHealthPickup()
@@ -86,11 +121,28 @@ public class AudioManager : MonoBehaviour {
         SFX.PlayOneShot(HealthPickup);
     }
 
-    public void playPowerupPickup()
+    public void playMisslePickup()
+    {
+        SFX.PlayOneShot(MisslePickup);
+    }
+
+    public void playDoorSound()
+    {
+        SFX.PlayOneShot(DoorSound);
+    }
+
+    public float playPowerupPickup()
+    {
+        StartCoroutine(doPowerup());
+        return PowerupPickup.length;
+    }
+
+    IEnumerator doPowerup()
     {
         StopCoroutine(bg);
         background.Stop();
         SFX.PlayOneShot(PowerupPickup);
         bg = StartCoroutine(playBackground());
+        yield break;
     }
 }
