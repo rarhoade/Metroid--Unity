@@ -13,7 +13,8 @@ public class Ripper_Movement : MonoBehaviour {
 	void Start () {
         rigid = GetComponent<Rigidbody>();
         spriteR = GetComponent<SpriteRenderer>();
-        rigid.velocity = Vector3.left * 2;
+        spriteR.flipX = true;
+        rigid.velocity = Vector3.right * 2;
 	}
 	
 	// Update is called once per frame

@@ -82,7 +82,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myDamage: 8
-  knockback: 1000
+  knockback: 10
+  lateralKnockback: 0
 --- !u!136 &136285159248608860
 CapsuleCollider:
   m_ObjectHideFlags: 1

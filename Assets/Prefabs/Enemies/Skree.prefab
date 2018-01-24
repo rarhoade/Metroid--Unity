@@ -103,7 +103,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52fbc4f79f722584999a36135fc0b801, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  explodeBulletPrefab: {fileID: 0}
+  explodeBulletPrefab: {fileID: 1620368099112398, guid: 5b2cfe48472d6fa458f18f54ac138772,
+    type: 2}
+  firingSpeed: 0
+  posOffset: 0
 --- !u!114 &114225454133484512
 MonoBehaviour:
   m_ObjectHideFlags: 1
