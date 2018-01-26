@@ -1,11 +1,11 @@
 fileFormatVersion: 2
 guid: 8cbd80b6603415540bb106d47271a448
-timeCreated: 1516769180
+timeCreated: 1517007065
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: metroid_enemies_sheet_0
-    21300002: metroid_enemies_sheet_1
+    21300000: zoomer_flat_1
+    21300002: zoomer_flat_2
     21300004: metroid_enemies_sheet_2
     21300006: metroid_enemies_sheet_3
     21300008: metroid_enemies_sheet_4
@@ -137,7 +137,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: metroid_enemies_sheet_0
+      name: zoomer_flat_1
       rect:
         serializedVersion: 2
         x: 9
@@ -155,7 +155,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: metroid_enemies_sheet_1
+      name: zoomer_flat_2
       rect:
         serializedVersion: 2
         x: 27
@@ -553,7 +553,7 @@ TextureImporter:
         width: 16
         height: 14
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
