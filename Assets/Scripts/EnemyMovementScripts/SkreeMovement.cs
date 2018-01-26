@@ -15,11 +15,13 @@ public class SkreeMovement : MonoBehaviour {
     int layerMask = 1 << 8;
 
     private bool hasCollided = false;
+    Animator anim;
 
 	// Use this for initialization
 	void Start () {
         rigid = GetComponent<Rigidbody>();
         downVel = new Vector3(xVel, yVel, 0);
+        anim = GetComponent<Animator>();
 	}
 	
 	// Update is called once per frame
@@ -32,11 +34,14 @@ public class SkreeMovement : MonoBehaviour {
         //going to need to use a layermask with the playerLayer in order to try and find them
         RaycastHit collidedLeft;
         RaycastHit collidedRight;
+        RaycastHit collidedCenter;
         bool foundObjLeft = Physics.Raycast(transform.position, Vector3.down + Vector3.left/2, out collidedLeft, 13f);
         Debug.DrawRay(transform.position, (Vector3.down + Vector3.left/2)*13f, Color.red);
         bool foundObjRight = Physics.Raycast(transform.position, Vector3.down + Vector3.right/2, out collidedRight, 13f);
         Debug.DrawRay(transform.position, (Vector3.down + Vector3.right/2) * 13f, Color.red);
-        if (foundObjLeft || foundObjRight)
+        bool foundObjCenter = Physics.Raycast(transform.position, Vector3.down, out collidedCenter, 13f);
+        Debug.DrawRay(transform.position, (Vector3.down) * 13f, Color.red);
+        if (foundObjLeft || foundObjRight || foundObjCenter)
         {
             GameObject hitObj = null;
             if (foundObjLeft && collidedLeft.collider.gameObject.layer == 8)
@@ -47,12 +52,16 @@ public class SkreeMovement : MonoBehaviour {
             {
                 hitObj = collidedRight.collider.gameObject;
             }
+            else if(foundObjCenter && collidedCenter.collider.gameObject.layer == 8)
+            {
+                hitObj = collidedCenter.collider.gameObject;
+            }
             if(hitObj != null)
             {
                 //Debug.Log(obj.gameObject.name);
                 if (hitObj.name == "Standing" || hitObj.name == "Morphed")
                 {
-                    Debug.Log("player is detected");
+                    //Debug.Log("player is detected");
                     //implement tracking slope
                     //If our current position is behind the player's x position move to the right
                     if ((transform.position.x - hitObj.transform.position.x) < 0)
@@ -69,6 +78,7 @@ public class SkreeMovement : MonoBehaviour {
                     }
                     rigid.velocity = downVel;
                     hasFallen = true;
+                    anim.SetTrigger("Falling");
                 }
             }
         }
@@ -85,6 +95,10 @@ public class SkreeMovement : MonoBehaviour {
         {
             hasCollided = true;
             //Debug.Log("Collided");
+        }
+        else if (obj.gameObject.layer == 0)
+        {
+            anim.SetTrigger("Hit_Floor");
         }
     }
 
