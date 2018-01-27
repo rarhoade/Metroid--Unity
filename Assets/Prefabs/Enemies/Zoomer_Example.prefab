@@ -117,10 +117,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   energy: {fileID: 0}
+  isEnemy: 1
+  isPaused: 0
   healthTotal: 24
   invulnerability: 0
   numberOfBlinks: 0
   blink: 0
+  timeToPause: 0.3
   lowHTime: 0.35
 --- !u!135 &135139554933043672
 SphereCollider:

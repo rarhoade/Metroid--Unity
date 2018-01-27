@@ -106,10 +106,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   energy: {fileID: 0}
+  isEnemy: 1
+  isPaused: 0
   healthTotal: 30
   invulnerability: 0
   numberOfBlinks: 0
   blink: 0.4
+  timeToPause: 0.2
   lowHTime: 0.35
 --- !u!114 &114188875117531716
 MonoBehaviour:
@@ -143,6 +146,7 @@ MonoBehaviour:
   downVel: {x: 0, y: 0, z: 0}
   xVel: 2
   yVel: -6
+  thisSkree: {fileID: 0}
 --- !u!114 &114627918161803424
 MonoBehaviour:
   m_ObjectHideFlags: 1
