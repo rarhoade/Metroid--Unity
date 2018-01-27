@@ -19,15 +19,15 @@ public class Ripper_Movement : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        Debug.Log(rigid.velocity);
+        //Debug.Log(rigid.velocity);
 	}
 
     private void OnCollisionEnter(Collision collision)
     {
        if(collision.collider.gameObject.layer == 0)
         {
-            Debug.Log(rigid.velocity);
-            Debug.Log(rigid.velocity);
+           // Debug.Log(rigid.velocity);
+            //Debug.Log(rigid.velocity);
             if (!spriteR.flipX)
             {
                 spriteR.flipX = true;

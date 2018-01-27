@@ -28,7 +28,7 @@ public class Reo_Movement : MonoBehaviour {
     {
         RaycastHit collidedLeft;
         RaycastHit collidedRight;
-        Debug.Log(rigid.velocity);
+        //Debug.Log(rigid.velocity);
         bool foundObjLeft = Physics.Raycast(transform.position, Vector3.down + Vector3.left / 2, out collidedLeft, 13f);
         Debug.DrawRay(transform.position, (Vector3.down + Vector3.left / 2) * 13f, Color.red);
         bool foundObjRight = Physics.Raycast(transform.position, Vector3.down + Vector3.right / 2, out collidedRight, 13f);

@@ -10,10 +10,14 @@ public class UnitHealth : MonoBehaviour {
 	private Rigidbody rigid;
     private PlayerState playerState;
 
+    public bool isEnemy;
+    public bool isPaused;
+
     public int healthTotal = 30;
     public bool invulnerability = false;
     public int numberOfBlinks = 2;
     public float blink = 0.4f;
+    public float timeToPause = 0.3f;
     public float lowHTime=0.35f;
 
 	void Start(){
@@ -56,9 +60,9 @@ public class UnitHealth : MonoBehaviour {
             //Debug.Log("Striker " + otherObj.ToString());
             //Debug.Log("My Pos: " + this.gameObject.transform.position.ToString());
 
-            Debug.Log("Health Tot: " + healthTotal + " Taking: " + damage + " energy is " + energy==null);
+            //Debug.Log("Health Tot: " + healthTotal + " Taking: " + damage + " energy is " + energy==null);
             healthTotal -= damage;
-            Debug.Log("Outcome: " + healthTotal);
+            //Debug.Log("Outcome: " + healthTotal);
             //NOT WORKING KNOCKBACK
             //execute knockback
             //calculate by figuring out the direction of the 
@@ -82,6 +86,10 @@ public class UnitHealth : MonoBehaviour {
                 if(playerState)
                 {
                     playerState.SendFlying();
+                }
+                else if (isEnemy)
+                {
+                    StartCoroutine(pauseOnHit());
                 }
                 if (knockback != 0)
                 {
@@ -184,5 +192,22 @@ public class UnitHealth : MonoBehaviour {
             }
             yield return new WaitForSeconds(lowHTime);
         }
+    }
+
+    IEnumerator pauseOnHit()
+    {
+        Vector3 holdVel = rigid.velocity;
+        rigid.velocity = Vector3.zero;
+        Debug.Log("Pausing");
+        isPaused = true;
+        yield return new WaitForSeconds(timeToPause);
+        isPaused = false;
+        rigid.velocity = holdVel;
+
+    }
+
+    public bool hasPaused()
+    {
+        return isPaused;
     }
 }

@@ -13,8 +13,10 @@ public class SkreeMovement : MonoBehaviour {
     public float xVel = 0;
     public float yVel = -2;
     int layerMask = 1 << 8;
+    GameObject hitObj = null;
 
     private bool hasCollided = false;
+    public UnitHealth thisSkree;
     Animator anim;
 
 	// Use this for initialization
@@ -22,6 +24,7 @@ public class SkreeMovement : MonoBehaviour {
         rigid = GetComponent<Rigidbody>();
         downVel = new Vector3(xVel, yVel, 0);
         anim = GetComponent<Animator>();
+        thisSkree = GetComponent<UnitHealth>();
 	}
 	
 	// Update is called once per frame
@@ -41,9 +44,9 @@ public class SkreeMovement : MonoBehaviour {
         Debug.DrawRay(transform.position, (Vector3.down + Vector3.right/2) * 13f, Color.red);
         bool foundObjCenter = Physics.Raycast(transform.position, Vector3.down, out collidedCenter, 13f);
         Debug.DrawRay(transform.position, (Vector3.down) * 13f, Color.red);
-        if (foundObjLeft || foundObjRight || foundObjCenter)
+        if ((foundObjLeft || foundObjRight || foundObjCenter) && !hasFallen)
         {
-            GameObject hitObj = null;
+            
             if (foundObjLeft && collidedLeft.collider.gameObject.layer == 8)
             {
                 hitObj = collidedLeft.collider.gameObject;
@@ -80,6 +83,25 @@ public class SkreeMovement : MonoBehaviour {
                     hasFallen = true;
                     anim.SetTrigger("Falling");
                 }
+            }
+        }
+        else if (hasFallen)
+        {
+            if (!thisSkree.hasPaused())
+            {
+                if ((transform.position.x - hitObj.transform.position.x) < 0)
+                {
+                    downVel.x = xVel;
+                }
+                else if ((transform.position.x - hitObj.transform.position.y) > 0)
+                {
+                    downVel.x = -xVel;
+                }
+                else
+                {
+                    downVel.x = 0;
+                }
+                rigid.velocity = downVel;
             }
         }
         else if (hasCollided)
