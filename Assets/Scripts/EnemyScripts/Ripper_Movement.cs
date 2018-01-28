@@ -22,11 +22,32 @@ public class Ripper_Movement : MonoBehaviour {
         //Debug.Log(rigid.velocity);
 	}
 
-    private void OnCollisionEnter(Collision collision)
+    /*private void OnCollisionEnter(Collision collision)
     {
        if(collision.collider.gameObject.layer == 0)
         {
            // Debug.Log(rigid.velocity);
+            //Debug.Log(rigid.velocity);
+            if (!spriteR.flipX)
+            {
+                spriteR.flipX = true;
+                rigid.velocity = Vector3.right * speed;
+                //this.transform.position += rigid.velocity * 10f;
+            }
+            else
+            {
+                spriteR.flipX = false;
+                rigid.velocity = Vector3.left * speed;
+                //this.transform.position += rigid.velocity * 10f;
+            }
+        }
+    }*/
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.layer == 0)
+        {
+            // Debug.Log(rigid.velocity);
             //Debug.Log(rigid.velocity);
             if (!spriteR.flipX)
             {

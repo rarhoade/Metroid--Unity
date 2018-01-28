@@ -16,7 +16,7 @@ public class DestroyOnCollisionEnter : MonoBehaviour {
     {
         if (rigid.velocity != Vector3.zero && (other.gameObject.layer == 0) && GetComponent<SkreeMovement>().getHasFallen())
         {
-            Debug.Log(other.gameObject.name + " " + other.gameObject.transform.localPosition);
+            //Debug.Log(other.gameObject.name + " " + other.gameObject.transform.localPosition);
             //this.transform.position = other.gameObject.transform.position;
             StartCoroutine(WaitAndDestroy());
         }

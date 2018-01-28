@@ -88,7 +88,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   energy: {fileID: 0}
-  isEnemy: 0
+  isEnemy: 1
   isPaused: 0
   healthTotal: 30
   invulnerability: 0

@@ -5,12 +5,12 @@ using UnityEngine;
 public class Reo_Movement : MonoBehaviour {
     Rigidbody rigid;
     Coroutine swoop = null;
+    bool swoopingUp = false;
     bool isLeft = false;
     public float reoSpeed = 100f;
 	// Use this for initialization
 	void Start () {
         rigid = GetComponent<Rigidbody>();
-        //StartCoroutine(stupidShit());
 	}
 	
 	// Update is called once per frame
@@ -19,18 +19,13 @@ public class Reo_Movement : MonoBehaviour {
 
     }
 
-    IEnumerator stupidShit()
-    {
-        yield return new WaitForSecondsRealtime(10);
-        rigid.isKinematic = false;
-        yield break;
-    }
 
     private void startAggro(GameObject intake, bool lefter)
     {
         Debug.Log("IM HERE");
         if(swoop == null)
         {
+            Debug.Log("In Aggro");
             swoop = StartCoroutine(swoopDown(intake, lefter));
         }
     }
@@ -58,6 +53,7 @@ public class Reo_Movement : MonoBehaviour {
             }
             if (hitObj != null)
             {
+                Debug.Log("HitObj: " + hitObj.name);
                 startAggro(hitObj, isLeft);
             }
         }
@@ -65,18 +61,25 @@ public class Reo_Movement : MonoBehaviour {
 
     IEnumerator swoopUp(Vector3 horiDir)
     {
-        
-        
         yield return new WaitForSeconds(0.5f);
         rigid.velocity = rigid.velocity + (Vector3.up / 2) * reoSpeed;
         yield return new WaitForSeconds(0.5f);
         rigid.velocity = rigid.velocity + (Vector3.up / 2) * reoSpeed;
         yield return new WaitForSeconds(0.4f);
         rigid.velocity = Vector3.up * reoSpeed;
-        yield return new WaitForSeconds(0.4f);
-        rigid.velocity = Vector3.zero;
-        swoop = null;
+        swoopingUp = true;
         yield break;
+    }
+
+    private void OnCollisionStay(Collision collision)
+    {
+        if (swoopingUp && collision.collider.gameObject.layer == 0)
+        {
+            Debug.Log("This is the object causing the collision " + collision.collider.gameObject.name);
+            swoopingUp = false;
+            swoop = null;
+            rigid.velocity = Vector3.zero;
+        }
     }
 
     IEnumerator swoopDown(GameObject player, bool isLeftDir)
