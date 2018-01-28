@@ -9,6 +9,7 @@ TagManager:
   - Missle
   - Energy
   - MisslePower
+  - TuckBall
   layers:
   - Default
   - TransparentFX
