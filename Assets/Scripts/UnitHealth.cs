@@ -123,6 +123,11 @@ public class UnitHealth : MonoBehaviour {
         }
         if (healthTotal <= 0)
         {
+            if (isEnemy)
+            {
+                Debug.Log("drop is being called");
+                GetComponent<DropItem>().dropItem();
+            }
             Destroy(this.gameObject);
         }
     }
