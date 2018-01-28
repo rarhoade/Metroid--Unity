@@ -65,7 +65,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6bd56ccd93701e4ea9f42eea8dd020b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  anObject: {fileID: 0}
+  anObject: {fileID: 1065593742677902, guid: e82ac2bb21b94fe4f8be1cbc88dc9c97, type: 2}
   anObjCollider: {fileID: 0}
   zebSpawnOffset: {x: 0, y: 0.5, z: 0}
 --- !u!212 &212278988817903188
