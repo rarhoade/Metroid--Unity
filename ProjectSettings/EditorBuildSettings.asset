@@ -4,4 +4,10 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 0
+    path: Assets/Scenes/LAB_Lava.unity
+    guid: 7f33eac6d7d080146bf1d28a09765e19
+  - enabled: 1
+    path: Assets/Scenes/Main.unity
+    guid: 48d44eb069b37b24d9b4026a56ecf9a3

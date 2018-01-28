@@ -4,10 +4,12 @@ using UnityEngine;
 
 public class LavaHolderObj : MonoBehaviour {
     private bool hittingPlayerThisFrame = false;
+    private GameObject player;
 
 	// Use this for initialization
 	void Start () {
         StartCoroutine(resetBool());
+        player = GameObject.FindGameObjectWithTag("Player");
 	}
 
     public void hitPlayer(UnitHealth uh)
@@ -15,8 +17,9 @@ public class LavaHolderObj : MonoBehaviour {
         if(!hittingPlayerThisFrame)
         {
             hittingPlayerThisFrame = true;
-            Debug.Log("HIT PLAYER");
+            //Debug.Log("HIT PLAYER");
             uh.TakeDamage(1, 0, transform.position, true, false);
+            PlayerRun.slowDown();
         }
     }
 
@@ -28,6 +31,7 @@ public class LavaHolderObj : MonoBehaviour {
             {
                 yield return new WaitForSecondsRealtime(0.1f);
                 hittingPlayerThisFrame = false;
+                PlayerRun.speedUp();
             }
             yield return new WaitForEndOfFrame();
         }

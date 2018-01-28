@@ -6,7 +6,8 @@ public class PlayerRun : MonoBehaviour {
 
     Rigidbody rigid;
 
-    public float moveSpeed = 5;
+    public float maxMoveSpeed = 5;
+    private static bool slowed = false;
 
     private PlayerState playerState;
     private PlayerJump playerJump;
@@ -23,6 +24,11 @@ public class PlayerRun : MonoBehaviour {
 
         if (playerState.IsEnabled())
         {
+            float moveSpeed = maxMoveSpeed;
+            if (slowed)
+            {
+                moveSpeed /= 2;
+            }
             playerJump = this.GetComponentInChildren<PlayerJump>();
             Vector3 newVelocity = rigid.velocity;
 
@@ -47,5 +53,14 @@ public class PlayerRun : MonoBehaviour {
             }
         }
 
+    }
+
+    public static void slowDown()
+    {
+        slowed = true;
+    }
+    public static void speedUp()
+    {
+        slowed = false;
     }
 }
