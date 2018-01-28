@@ -206,6 +206,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9714625f930dea4d8e374fcfe7cf47e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isStandingForm: 1
   jumpPower: 10
   sink: -8.96
   boxSizes: 5
@@ -353,10 +354,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   energy: {fileID: 0}
+  isEnemy: 0
+  isPaused: 0
   healthTotal: 30
   invulnerability: 0
   numberOfBlinks: 2
-  blink: 0.4
+  blink: 0.5
+  timeToPause: 0.3
   lowHTime: 0.35
 --- !u!135 &135775388747158746
 SphereCollider:

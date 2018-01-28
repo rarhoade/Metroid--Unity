@@ -23,6 +23,8 @@ GameObject:
   - component: {fileID: 54010251600145222}
   - component: {fileID: 114180512017168560}
   - component: {fileID: 65445930247874442}
+  - component: {fileID: 114667401890229468}
+  - component: {fileID: 114429278611962190}
   m_Layer: 10
   m_Name: Zeb
   m_TagString: Untagged
@@ -50,7 +52,7 @@ Rigidbody:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1065593742677902}
   serializedVersion: 2
-  m_Mass: 1
+  m_Mass: 20.04
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 0
@@ -65,7 +67,7 @@ BoxCollider:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1065593742677902}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 0.2}
@@ -82,14 +84,42 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   energy: {fileID: 0}
-  isEnemy: 0
+  isEnemy: 1
   isPaused: 0
-  healthTotal: 30
+  healthTotal: 1
   invulnerability: 0
   numberOfBlinks: 0
   blink: 0
   timeToPause: 0.3
   lowHTime: 0.35
+--- !u!114 &114429278611962190
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1065593742677902}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 669aacd3d2d192f4e8ffcad753a6d791, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  myDamage: 8
+  knockback: 10
+  lateralKnockback: 0
+--- !u!114 &114667401890229468
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1065593742677902}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a2213209b913f848becd33e5b7a8cfa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerFound: []
+  rigid: {fileID: 0}
+  zebSpeed: 4
 --- !u!212 &212634276920564486
 SpriteRenderer:
   m_ObjectHideFlags: 1

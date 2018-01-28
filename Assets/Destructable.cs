@@ -18,7 +18,16 @@ public class Destructable : MonoBehaviour {
     {
         if(other.gameObject.layer == 9)
         {
-            Destroy(this.gameObject);
+            StartCoroutine(TempDestroy());
         }
+    }
+
+    IEnumerator TempDestroy()
+    {
+        GetComponent<SpriteRenderer>().enabled = false;
+        GetComponent<BoxCollider>().enabled = false;
+        yield return new WaitForSeconds(4.0f);
+        GetComponent<SpriteRenderer>().enabled = true;
+        GetComponent<BoxCollider>().enabled = true;
     }
 }
