@@ -127,7 +127,7 @@ MonoBehaviour:
   healthTotal: 30
   invulnerability: 0
   numberOfBlinks: 0
-  blink: 0.4
+  blink: 0
   timeToPause: 0.2
   lowHTime: 0.35
 --- !u!114 &114188875117531716

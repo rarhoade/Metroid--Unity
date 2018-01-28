@@ -65,7 +65,7 @@ public class Reo_Movement : MonoBehaviour {
 
     IEnumerator swoopUp(Vector3 horiDir)
     {
-        Debug.Log("in swoopUp");
+        
         
         yield return new WaitForSeconds(0.5f);
         rigid.velocity = rigid.velocity + (Vector3.up / 2) * reoSpeed;
@@ -90,7 +90,7 @@ public class Reo_Movement : MonoBehaviour {
             horiDir = Vector3.right;
         }
         rigid.velocity = Vector3.down * reoSpeed;
-        yield return new WaitForSeconds(0.65f);
+        yield return new WaitForSeconds(0.4f);
         rigid.velocity = rigid.velocity + (horiDir/2 + Vector3.up / 2) * reoSpeed;
         yield return new WaitForSeconds(0.5f);
         rigid.velocity = rigid.velocity + (horiDir/2 + Vector3.up / 2) * reoSpeed;
