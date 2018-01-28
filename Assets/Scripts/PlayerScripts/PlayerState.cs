@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerState : MonoBehaviour {
+public class PlayerState : MonoBehaviour
+{
     PlayerInventory playerInventory;
     PlayerJump playerJump;
 
@@ -20,8 +21,8 @@ public class PlayerState : MonoBehaviour {
     private bool isMissleOn = false;
     private int inRoom = 0;
 
-    private Vector2[] roomMins = { new Vector2(0, 15),  new Vector2(80, 15), new Vector2(96, 15),  new Vector2(160,13),  new Vector2(176, 120), new Vector2(192, 58),  new Vector2(208, 60), new Vector2(112, 150), new Vector2(96, 150) };
-    private Vector2[] roomMaxs = { new Vector2(79, 29), new Vector2(95, 29), new Vector2(159, 29), new Vector2(175,212), new Vector2(191, 135), new Vector2(207, 212), new Vector2(335, 75), new Vector2(159, 165), new Vector2(111, 165) };
+    private Vector2[] roomMins = { new Vector2(0, 15), new Vector2(78, 15), new Vector2(96, 15), new Vector2(160, 13), new Vector2(176, 120), new Vector2(192, 58), new Vector2(208, 60), new Vector2(112, 150), new Vector2(96, 150) };
+    private Vector2[] roomMaxs = { new Vector2(77, 29), new Vector2(95, 29), new Vector2(159, 29), new Vector2(175, 212), new Vector2(191, 135), new Vector2(207, 212), new Vector2(335, 75), new Vector2(159, 165), new Vector2(111, 165) };
 
     private void Start()
     {
@@ -46,7 +47,7 @@ public class PlayerState : MonoBehaviour {
 
     private void Update()
     {
-        if(isEnabled)
+        if (isEnabled)
         {
             if (Input.GetKeyDown(KeyCode.Space))
             {
@@ -55,7 +56,7 @@ public class PlayerState : MonoBehaviour {
                     Debug.Log("MissleMode is Off");
                     isMissleOn = false;
                 }
-                else if(!isMissleOn && playerInventory.HasMisslePower())
+                else if (!isMissleOn && playerInventory.HasMisslePower())
                 {
                     Debug.Log("MissleMode is On");
                     isMissleOn = true;
@@ -71,7 +72,7 @@ public class PlayerState : MonoBehaviour {
         if (isEnabled)
         {
             playerJump = GetComponentInChildren<PlayerJump>();
-            if (standing && Input.GetKeyDown(KeyCode.DownArrow) && playerInventory.HasMorphBall() && playerJump.IsGrounded())
+            if (standing && Input.GetKeyDown(KeyCode.DownArrow) && playerInventory.HasMorphBall() && (playerJump.IsGrounded() || playerInventory.HasTuckBall()))
             {
                 Standing.SetActive(false);
                 Morphed.SetActive(true);
@@ -80,14 +81,14 @@ public class PlayerState : MonoBehaviour {
 
             if (!standing && (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.X)))
             {
-                if(!Physics.Raycast(transform.GetChild(1).transform.position, Vector3.up, 0.75f))
+                if (!Physics.Raycast(transform.GetChild(1).transform.position, Vector3.up, 0.75f))
                 {
                     Standing.SetActive(true);
                     Morphed.SetActive(false);
                     StartCoroutine(SetStanding());
                 }
             }
-        
+
             shooting = Input.GetKeyDown(KeyCode.Z);
         }
 

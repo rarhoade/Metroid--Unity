@@ -12,6 +12,7 @@ public class PlayerInventory : MonoBehaviour {
     
     public bool hasMorphBall = false;
     public bool hasLongShot = false;
+    public bool hasTuckBall = false;
     public bool hasMisslePower = false;
     private int missles;
 
@@ -44,7 +45,11 @@ public class PlayerInventory : MonoBehaviour {
 			Destroy (other.gameObject);
 			StartCoroutine(CollectAndPause());
 			hasLongShot = true;
-		} else if (other.tag == "Missle") {
+		} else if (other.tag == "TuckBall") {
+            Destroy(other.gameObject);
+            StartCoroutine(CollectAndPause());
+            hasTuckBall = true;
+        } else if (other.tag == "Missle") {
 			Destroy (other.gameObject);
 			addMissles ();
 		} else if (other.tag == "Energy") {
@@ -89,6 +94,11 @@ public class PlayerInventory : MonoBehaviour {
     public bool HasLongShot()
     {
         return hasLongShot;
+    }
+
+    public bool HasTuckBall()
+    {
+        return hasTuckBall;
     }
 
     public bool HasMisslePower()
