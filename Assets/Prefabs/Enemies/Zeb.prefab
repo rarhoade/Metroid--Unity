@@ -25,6 +25,7 @@ GameObject:
   - component: {fileID: 65445930247874442}
   - component: {fileID: 114667401890229468}
   - component: {fileID: 114429278611962190}
+  - component: {fileID: 114148473202672182}
   m_Layer: 10
   m_Name: Zeb
   m_TagString: Untagged
@@ -72,6 +73,21 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 0.2}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &114148473202672182
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1065593742677902}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d5b9b0952426e84c98ac6d6f725c6d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  probability: 0.33
+  missleProbability: 0.5
+  missleDrop: {fileID: 1876927003237580, guid: 7c54ce2eeaaf2db46bd3021d01330ac4, type: 2}
+  energyDrop: {fileID: 1042670804574718, guid: 5ae4e4860d7bf96408a6ff218052283f, type: 2}
 --- !u!114 &114180512017168560
 MonoBehaviour:
   m_ObjectHideFlags: 1

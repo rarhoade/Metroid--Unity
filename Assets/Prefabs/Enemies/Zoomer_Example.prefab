@@ -26,6 +26,7 @@ GameObject:
   - component: {fileID: 135139554933043672}
   - component: {fileID: 114326803152056002}
   - component: {fileID: 95026010406740580}
+  - component: {fileID: 114861161748834144}
   m_Layer: 10
   m_Name: Zoomer_Example
   m_TagString: Untagged
@@ -125,6 +126,21 @@ MonoBehaviour:
   blink: 0
   timeToPause: 0.3
   lowHTime: 0.35
+--- !u!114 &114861161748834144
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1617841020353158}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d5b9b0952426e84c98ac6d6f725c6d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  probability: 0.33
+  missleProbability: 0.5
+  missleDrop: {fileID: 1876927003237580, guid: 7c54ce2eeaaf2db46bd3021d01330ac4, type: 2}
+  energyDrop: {fileID: 1042670804574718, guid: 5ae4e4860d7bf96408a6ff218052283f, type: 2}
 --- !u!135 &135139554933043672
 SphereCollider:
   m_ObjectHideFlags: 1

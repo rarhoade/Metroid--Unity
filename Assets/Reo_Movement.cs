@@ -10,15 +10,25 @@ public class Reo_Movement : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         rigid = GetComponent<Rigidbody>();
+        //StartCoroutine(stupidShit());
 	}
 	
 	// Update is called once per frame
-	void Update () {
-		
-	}
+	void Update ()
+    {
+
+    }
+
+    IEnumerator stupidShit()
+    {
+        yield return new WaitForSecondsRealtime(10);
+        rigid.isKinematic = false;
+        yield break;
+    }
 
     private void startAggro(GameObject intake, bool lefter)
     {
+        Debug.Log("IM HERE");
         if(swoop == null)
         {
             swoop = StartCoroutine(swoopDown(intake, lefter));

@@ -143,7 +143,10 @@ public class UnitHealth : MonoBehaviour {
             SetSpritesAlpha(sprites, 1f);
             yield return new WaitForSeconds(blink);
         }
-        Physics.IgnoreLayerCollision(this.gameObject.layer, 10, false);
+        if (!invulnerability)
+        {
+            Physics.IgnoreLayerCollision(this.gameObject.layer, 10, false);
+        }
         yield break;
     }
 

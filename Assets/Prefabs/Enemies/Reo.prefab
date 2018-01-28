@@ -25,6 +25,7 @@ GameObject:
   - component: {fileID: 114740717237363802}
   - component: {fileID: 54220257984435400}
   - component: {fileID: 135722891081849678}
+  - component: {fileID: 114173778206306554}
   m_Layer: 10
   m_Name: Reo
   m_TagString: Untagged
@@ -60,6 +61,21 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 120
   m_CollisionDetection: 0
+--- !u!114 &114173778206306554
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1650552201374348}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d5b9b0952426e84c98ac6d6f725c6d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  probability: 0.33
+  missleProbability: 0.5
+  missleDrop: {fileID: 1876927003237580, guid: 7c54ce2eeaaf2db46bd3021d01330ac4, type: 2}
+  energyDrop: {fileID: 1042670804574718, guid: 5ae4e4860d7bf96408a6ff218052283f, type: 2}
 --- !u!114 &114449159958815962
 MonoBehaviour:
   m_ObjectHideFlags: 1

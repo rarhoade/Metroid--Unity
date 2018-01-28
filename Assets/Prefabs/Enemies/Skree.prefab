@@ -28,6 +28,7 @@ GameObject:
   - component: {fileID: 114627918161803424}
   - component: {fileID: 114188875117531716}
   - component: {fileID: 95032102292809438}
+  - component: {fileID: 114011931285813788}
   m_Layer: 10
   m_Name: Skree
   m_TagString: Untagged
@@ -80,6 +81,21 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114011931285813788
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1542929726145610}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d5b9b0952426e84c98ac6d6f725c6d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  probability: 0.33
+  missleProbability: 0.5
+  missleDrop: {fileID: 1876927003237580, guid: 7c54ce2eeaaf2db46bd3021d01330ac4, type: 2}
+  energyDrop: {fileID: 1042670804574718, guid: 5ae4e4860d7bf96408a6ff218052283f, type: 2}
 --- !u!114 &114045559175918866
 MonoBehaviour:
   m_ObjectHideFlags: 1
