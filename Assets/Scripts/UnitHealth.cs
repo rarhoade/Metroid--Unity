@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class UnitHealth : MonoBehaviour {
 
@@ -107,8 +108,21 @@ public class UnitHealth : MonoBehaviour {
             {
                 energy.text = healthTotal.ToString();
             }
+            if (healthTotal <= 0)
+            {
+                if (isEnemy)
+                {
+                    Debug.Log("drop is being called");
+                    GetComponent<DropItem>().dropItem();
+                }
+                else
+                {
+                    SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+                }
+                Destroy(this.gameObject);
+            }
             //TODO implement knockback force (zero out velocity then add force)
-            if (blink > 0)
+            else if (blink > 0)
             {
                 if(allowInvulnerability)
                 {
@@ -120,15 +134,6 @@ public class UnitHealth : MonoBehaviour {
             {
                 StartCoroutine(FlashDamage());
             }
-        }
-        if (healthTotal <= 0)
-        {
-            if (isEnemy)
-            {
-                Debug.Log("drop is being called");
-                GetComponent<DropItem>().dropItem();
-            }
-            Destroy(this.gameObject);
         }
     }
 
