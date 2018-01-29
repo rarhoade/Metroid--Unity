@@ -39,6 +39,14 @@ public class SolidOnPassThrough : MonoBehaviour {
         }
     }
 
+    private void OnCollisionExit(Collision collision)
+    {
+        if(collision.collider.gameObject.transform.position.y > this.transform.position.y && collision.collider.gameObject.layer == 8)
+        {
+            GetComponent<BoxCollider>().isTrigger = true;
+        }
+    }
+
     IEnumerator MakeSolid()
     {
         GetComponent<BoxCollider>().isTrigger = false;
