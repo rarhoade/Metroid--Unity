@@ -17,7 +17,7 @@ public class PlayerWeapon : MonoBehaviour {
     private PlayerInventory playerInventory;
 
     // Use this for initialization
-    void Awake () {
+    void Start () {
         playerDirection = GetComponentInParent<PlayerDirection>();
         playerInventory = GetComponentInParent<PlayerInventory>();
         playerState = GetComponentInParent<PlayerState>();

@@ -13,7 +13,7 @@ public class PlayerRun : MonoBehaviour {
     private PlayerJump playerJump;
 
 	// Use this for initialization
-	void Awake  () {
+	void Start  () {
         rigid = this.GetComponent<Rigidbody>();
         playerJump = this.GetComponentInChildren<PlayerJump>();
         playerState = this.GetComponent<PlayerState>();

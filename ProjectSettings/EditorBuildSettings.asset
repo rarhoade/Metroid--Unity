@@ -11,3 +11,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Main.unity
     guid: 48d44eb069b37b24d9b4026a56ecf9a3
+  - enabled: 1
+    path: Assets/Scenes/Pinball Pete.unity
+    guid: 954091ee8b93bfc4bb1de7238cd1261e

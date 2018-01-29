@@ -9,7 +9,7 @@ public class PlayerDirection : MonoBehaviour {
     private bool holdingUp = false;
     private bool facingRight = true;
 
-    private void Awake()
+    private void Start()
     {
         playerState = this.GetComponent<PlayerState>();
     }

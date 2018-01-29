@@ -50,7 +50,7 @@ public class PlayerSprite : MonoBehaviour {
     private Coroutine sonic;
    
     // Use this for initialization
-    void Awake()
+    void Start()
     {
         Awaken();
     }
