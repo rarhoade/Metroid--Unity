@@ -26,7 +26,7 @@ public class OnBulletTransform : MonoBehaviour {
         {
             //Debug.Log("this is going");
             GameObject summon = Instantiate(transformer);
-            transformer.transform.position = this.transform.position;
+            summon.transform.position = this.transform.position;
             Destroy(this.gameObject);
         }
     }

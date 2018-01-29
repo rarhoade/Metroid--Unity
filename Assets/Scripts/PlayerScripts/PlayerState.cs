@@ -9,6 +9,7 @@ public class PlayerState : MonoBehaviour {
     public GameObject Standing;
     public GameObject Morphed;
     public float bufferLookUp = 0.1f;
+    public bool checkStuff = true;
 
     private Rigidbody rigid;
     private bool isEnabled = true;
@@ -34,12 +35,15 @@ public class PlayerState : MonoBehaviour {
 
     private void FixedUpdate()
     {
-        for (int i = 0; i < roomMaxs.Length; i++)
+        if(checkStuff)
         {
-            if (roomMins[i].x < transform.position.x && transform.position.x < roomMaxs[i].x &&
-                roomMins[i].y < transform.position.y && transform.position.y < roomMaxs[i].y)
+            for (int i = 0; i < roomMaxs.Length; i++)
             {
-                inRoom = i;
+                if (roomMins[i].x < transform.position.x && transform.position.x < roomMaxs[i].x &&
+                    roomMins[i].y < transform.position.y && transform.position.y < roomMaxs[i].y)
+                {
+                    inRoom = i;
+                }
             }
         }
     }
@@ -71,7 +75,7 @@ public class PlayerState : MonoBehaviour {
         if (isEnabled)
         {
             playerJump = GetComponentInChildren<PlayerJump>();
-            if (standing && Input.GetKeyDown(KeyCode.DownArrow) && playerInventory.HasMorphBall() && playerJump.IsGrounded())
+            if (standing && Input.GetKeyDown(KeyCode.DownArrow) && playerInventory.HasMorphBall() && (playerJump.IsGrounded() || playerInventory.HasTuckBall()))
             {
                 Standing.SetActive(false);
                 Morphed.SetActive(true);

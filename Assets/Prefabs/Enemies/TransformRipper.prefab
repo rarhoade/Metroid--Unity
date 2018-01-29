@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 54228155717602218}
   - component: {fileID: 114317521950985790}
   - component: {fileID: 114434671273490170}
-  - component: {fileID: 114430663904517594}
+  - component: {fileID: 114289131238795058}
   m_Layer: 10
   m_Name: TransformRipper
   m_TagString: Untagged
@@ -60,6 +60,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 120
   m_CollisionDetection: 0
+--- !u!114 &114289131238795058
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1489148445035720}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45eab6f93d0195245a7e41bdfc7eccd4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  transformer: {fileID: 1084329154468376, guid: 7b0d4e24bcb09374797d2967ba4c20cb,
+    type: 2}
 --- !u!114 &114317521950985790
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -71,19 +84,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1874ed5b9fd364f41a1efd1384b1de76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114430663904517594
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1489148445035720}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 012ab844029129241a37edad49c2218f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  transformer: {fileID: 1084329154468376, guid: 7b0d4e24bcb09374797d2967ba4c20cb,
-    type: 2}
 --- !u!114 &114434671273490170
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -105,7 +105,7 @@ CapsuleCollider:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1489148445035720}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   m_Radius: 0.27
   m_Height: 1.12
