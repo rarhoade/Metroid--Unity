@@ -117,7 +117,14 @@ public class UnitHealth : MonoBehaviour {
                 }
                 else
                 {
-                    SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+                    if (GameManager.instance == null)
+                    {
+                        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+                    }
+                    else
+                    {
+                        GameManager.instance.resetGame(); 
+                    }
                 }
                 Destroy(this.gameObject);
             }

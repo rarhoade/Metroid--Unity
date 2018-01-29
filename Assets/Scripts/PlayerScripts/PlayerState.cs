@@ -82,7 +82,7 @@ public class PlayerState : MonoBehaviour {
                 standing = false;
             }
 
-            if (!standing && (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.X)))
+            if (!standing && (Input.GetKeyDown(KeyCode.UpArrow) || (Input.GetKeyDown(KeyCode.X) && !playerInventory.HasPowerJump())))
             {
                 if(!Physics.Raycast(transform.GetChild(1).transform.position, Vector3.up, 0.75f))
                 {

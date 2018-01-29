@@ -11,45 +11,64 @@ public class PlayerJump : MonoBehaviour {
     public float jumpPower = 12;
     public float sink = -10;
     public float boxSizes = 5;
+    public float maxChargeTime = 1.5f;
+    public float maxChargeJumpPower = 24;
     bool stillJumped = false;
     bool moveJumped = false;
     private PlayerState playerState;
+    private PlayerInventory playerInventory;
+    private PlayerSprite playerSprite;
 
 	// Use this for initialization
 	void Start () {
         rigid = GetComponentInParent<Rigidbody>();
         col = this.GetComponent<Collider>();
         playerState = GetComponentInParent<PlayerState>();
+        playerInventory = GetComponentInParent<PlayerInventory>();
+        playerSprite = GetComponentInParent<PlayerSprite>();
 	}
 	
 	// Update is called once per frame
 	void Update ()
     {
-        if (playerState.IsEnabled() && isStandingForm)
+        if (playerState.IsEnabled())
         {
-            Vector3 newVelocity = rigid.velocity;
-        
-            //Vertical
-            if (Input.GetKeyDown(KeyCode.X) && IsGrounded())
+            if (isStandingForm)
             {
-                newVelocity.y = jumpPower;
-                if (rigid.velocity.x == 0)
+                Vector3 newVelocity = rigid.velocity;
+
+                //Vertical
+                if (Input.GetKeyDown(KeyCode.X) && IsGrounded())
                 {
-                    StartCoroutine(SetStillJumped());
+                    newVelocity.y = jumpPower;
+                    if (rigid.velocity.x == 0)
+                    {
+                        StartCoroutine(SetStillJumped());
+                    }
+                    else
+                    {
+                        StartCoroutine(SetMoveJumped());
+                    }
                 }
-                else
+
+                rigid.velocity = newVelocity;
+
+                newVelocity = rigid.velocity;
+                newVelocity.y = sink;
+                if (!Input.GetKey(KeyCode.X) && !IsGrounded())
                 {
-                    StartCoroutine(SetMoveJumped());
+                    rigid.velocity = newVelocity;
                 }
             }
-
-            rigid.velocity = newVelocity;
-        
-            newVelocity = rigid.velocity;
-            newVelocity.y = sink;
-            if(!Input.GetKey(KeyCode.X) && !IsGrounded())
+            else if (playerInventory.HasPowerJump())
             {
-                rigid.velocity = newVelocity;
+                Vector3 newVelocity = rigid.velocity;
+
+                if (Input.GetKeyDown(KeyCode.X) && IsGrounded())
+                {
+                    StartCoroutine(ChargePowerJump());
+                    rigid.velocity = Vector3.zero;
+                }
             }
         }
     }
@@ -117,6 +136,25 @@ public class PlayerJump : MonoBehaviour {
     public bool IsMoveJumped()
     {
         return moveJumped;
+    }
+
+    IEnumerator ChargePowerJump()
+    {
+        float startTime = Time.time;
+        float baseAnimTime = playerSprite.animTime;
+        float proportion = 0f;
+        while (Input.GetKey(KeyCode.X))
+        {
+            proportion = Mathf.Min(Time.time - startTime, maxChargeTime)/maxChargeTime;
+            float animTime = baseAnimTime - baseAnimTime * 0.5f * proportion;
+            playerSprite.animTime = animTime;
+            yield return new WaitForEndOfFrame();
+        }
+        playerSprite.animTime = baseAnimTime;
+        Vector3 newVel = rigid.velocity;
+        newVel.y = (maxChargeJumpPower - jumpPower) * proportion + jumpPower;
+        StartCoroutine(SetStillJumped());
+        yield break;
     }
 
     IEnumerator SetStillJumped()
