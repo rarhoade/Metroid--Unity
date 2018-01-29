@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 212272414465959470}
   - component: {fileID: 65169932106748452}
   - component: {fileID: 114016112117144998}
+  - component: {fileID: 114937500857345294}
   m_Layer: 14
   m_Name: Tile_PassThroughWall
   m_TagString: Untagged
@@ -66,6 +67,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   thisPosition: {x: 0, y: 0, z: 0}
+--- !u!114 &114937500857345294
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1084329154468376}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09854ed52494b4c4f8e8111dcab8ce04, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!212 &212272414465959470
 SpriteRenderer:
   m_ObjectHideFlags: 1
