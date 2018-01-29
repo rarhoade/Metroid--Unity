@@ -34,6 +34,10 @@ public class CameraMovePinball : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        if (player == null)
+        {
+            player = GameObject.FindGameObjectWithTag("Player");
+        }
         if (!transitioning)
         {
             //Debug.Log ("Uh oh");

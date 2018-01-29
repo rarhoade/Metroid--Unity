@@ -52,7 +52,6 @@ public class PlayerRun : MonoBehaviour {
                 rigid.velocity = new Vector3(0, rigid.velocity.y);
             }
         }
-
     }
 
     public static void slowDown()

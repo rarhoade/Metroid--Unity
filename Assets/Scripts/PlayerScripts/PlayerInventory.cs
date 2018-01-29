@@ -17,7 +17,7 @@ public class PlayerInventory : MonoBehaviour {
     public bool hasMisslePower = false;
     private int missles;
 
-    private void Start()
+    private void Awake()
     {
         missles = 3;
         uh = GetComponent<UnitHealth>();
@@ -26,13 +26,16 @@ public class PlayerInventory : MonoBehaviour {
 
     private void Update()
     {
-        if (uh.IsInvincable())
+        if (missleCount != null)
         {
-            missleCount.text = "99";
-        }
-        else
-        {
-            missleCount.text = missles.ToString();
+            if (uh.IsInvincable())
+            {
+                missleCount.text = "99";
+            }
+            else
+            {
+                missleCount.text = missles.ToString();
+            }
         }
     }
 

@@ -33,8 +33,8 @@ public class SpawnZeb : MonoBehaviour {
                 spawnedZeb.transform.position = this.transform.position +  zebSpawnOffset;
             }
         }
-        else
-            Debug.Log("Nothing has been detected");
+        //else
+        //    Debug.Log("Nothing has been detected");
     }
 
     public void setSpawnedZebItem(GameObject o)

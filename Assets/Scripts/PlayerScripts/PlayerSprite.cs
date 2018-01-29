@@ -44,18 +44,31 @@ public class PlayerSprite : MonoBehaviour {
 
     private bool morphed = false;
     private int morphInt = 0;
+
+    private Coroutine run;
+    private Coroutine spin;
+    private Coroutine sonic;
    
     // Use this for initialization
-    void Start()
+    void Awake()
+    {
+        Awaken();
+    }
+
+    public void Awaken()
     {
         playerDirection = this.GetComponent<PlayerDirection>();
         playerState = this.GetComponent<PlayerState>();
         playerJump = this.GetComponentInChildren<PlayerJump>();
         spriteRenderer = this.GetComponentInChildren<SpriteRenderer>();
         morphedRenderer = morphedForm.GetComponent<SpriteRenderer>();
-        StartCoroutine(RunForestRun());
-        StartCoroutine(SpinMove());
-        StartCoroutine(SonicRun());
+        if (run == null)
+            run = StartCoroutine(RunForestRun());
+        if (spin == null)
+            spin = StartCoroutine(SpinMove());
+        if (sonic == null)
+            sonic = StartCoroutine(SonicRun());
+
     }
 
     // Update is called once per frame

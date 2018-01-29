@@ -51,6 +51,7 @@ GameObject:
   - component: {fileID: 4155580022343566}
   - component: {fileID: 212631863220267416}
   - component: {fileID: 135775388747158746}
+  - component: {fileID: 114718022732743114}
   m_Layer: 8
   m_Name: Morphed
   m_TagString: Untagged
@@ -209,8 +210,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isStandingForm: 1
   jumpPower: 10
-  sink: -8.96
+  sink: -6.33
   boxSizes: 5
+  maxChargeTime: 1.5
+  maxChargeJumpPower: 24
 --- !u!114 &114288267124558282
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -236,6 +239,8 @@ MonoBehaviour:
   missleCount: {fileID: 0}
   hasMorphBall: 0
   hasLongShot: 0
+  hasTuckBall: 0
+  hasPowerJump: 0
   hasMisslePower: 0
 --- !u!114 &114414348610613850
 MonoBehaviour:
@@ -343,6 +348,7 @@ MonoBehaviour:
   Standing: {fileID: 1978080059800698}
   Morphed: {fileID: 1585916132055764}
   bufferLookUp: 0.1
+  checkStuff: 1
 --- !u!114 &114687699846551122
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -363,6 +369,23 @@ MonoBehaviour:
   blink: 0.5
   timeToPause: 0.3
   lowHTime: 0.35
+--- !u!114 &114718022732743114
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1585916132055764}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9714625f930dea4d8e374fcfe7cf47e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isStandingForm: 0
+  jumpPower: 12
+  sink: -8
+  boxSizes: 5
+  maxChargeTime: 1
+  maxChargeJumpPower: 15.05
 --- !u!135 &135775388747158746
 SphereCollider:
   m_ObjectHideFlags: 1
@@ -397,8 +420,8 @@ CapsuleCollider:
   m_Material: {fileID: 13400000, guid: ccf0ddc175614d84f98e1555d15a6fda, type: 2}
   m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: 0.4
-  m_Height: 1.7
+  m_Radius: 0.2
+  m_Height: 1.6
   m_Direction: 1
   m_Center: {x: 0, y: -0.1, z: 0}
 --- !u!212 &212143999453106272

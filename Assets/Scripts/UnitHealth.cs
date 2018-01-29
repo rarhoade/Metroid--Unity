@@ -119,6 +119,7 @@ public class UnitHealth : MonoBehaviour {
                     {
                         z.zebSpawner.setSpawnedZebItem(g);
                     }
+                    Destroy(this.gameObject);
                 }
                 else
                 {
@@ -128,17 +129,16 @@ public class UnitHealth : MonoBehaviour {
                     }
                     else
                     {
-                        GameManager.instance.resetGame(); 
+                        GameManager.instance.resetGame();
                     }
                 }
-                Destroy(this.gameObject);
             }
             //TODO implement knockback force (zero out velocity then add force)
             else if (blink > 0)
             {
                 if(allowInvulnerability)
                 {
-                    StartCoroutine(IFrames());
+                    StartCoroutine(IFrames(false));
                     AudioManager.instance.playSamusHit();
                 }
             }
@@ -149,12 +149,32 @@ public class UnitHealth : MonoBehaviour {
         }
     }
 
-    IEnumerator IFrames()
+    public void resetGame()
+    {
+        playerState.SetEnabled(false);
+        energy.text = "0... You've Died";
+        StartCoroutine(IFrames(true));
+    }
+
+    IEnumerator IFrames(bool doMore)
     {
         Physics.IgnoreLayerCollision(this.gameObject.layer, 10, true);
         SpriteRenderer[] sprites = gameObject.GetComponentsInChildren<SpriteRenderer>();
-        for (int i = 0; i < numberOfBlinks; i++)
+        int blinkers = numberOfBlinks;
+        if (doMore)
         {
+            blinkers *= 3;
+        }
+        for (int i = 0; i < blinkers; i++)
+        {
+            if (i == 2*numberOfBlinks)
+            {
+                energy.text = "0... Respawning";
+            }
+            else if (i > numberOfBlinks)
+            {
+                energy.text += ".";
+            }
             SetSpritesAlpha(sprites, 0.5f);
             yield return new WaitForSeconds(blink);
             SetSpritesAlpha(sprites, 1f);
@@ -163,6 +183,13 @@ public class UnitHealth : MonoBehaviour {
         if (!invulnerability)
         {
             Physics.IgnoreLayerCollision(this.gameObject.layer, 10, false);
+        }
+
+        if (doMore)
+        {
+            energy.text = "30";
+            healthTotal = 30;
+            playerState.SetEnabled(true);
         }
         yield break;
     }

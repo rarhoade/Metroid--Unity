@@ -20,7 +20,7 @@ public class PlayerJump : MonoBehaviour {
     private PlayerSprite playerSprite;
 
 	// Use this for initialization
-	void Start () {
+	void Awake () {
         rigid = GetComponentInParent<Rigidbody>();
         col = this.GetComponent<Collider>();
         playerState = GetComponentInParent<PlayerState>();
