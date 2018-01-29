@@ -124,7 +124,7 @@ MonoBehaviour:
   energy: {fileID: 0}
   isEnemy: 1
   isPaused: 0
-  healthTotal: 30
+  healthTotal: 20
   invulnerability: 0
   numberOfBlinks: 0
   blink: 0

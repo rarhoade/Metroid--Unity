@@ -77,6 +77,7 @@ public class PlayerState : MonoBehaviour {
             playerJump = GetComponentInChildren<PlayerJump>();
             if (standing && Input.GetKeyDown(KeyCode.DownArrow) && playerInventory.HasMorphBall() && (playerJump.IsGrounded() || playerInventory.HasTuckBall()))
             {
+                GetComponent<CapsuleCollider>().height = 0;
                 Standing.SetActive(false);
                 Morphed.SetActive(true);
                 standing = false;
@@ -86,6 +87,7 @@ public class PlayerState : MonoBehaviour {
             {
                 if(!Physics.Raycast(transform.GetChild(1).transform.position, Vector3.up, 0.75f))
                 {
+                    GetComponent<CapsuleCollider>().height = 1.6f;
                     Standing.SetActive(true);
                     Morphed.SetActive(false);
                     StartCoroutine(SetStanding());

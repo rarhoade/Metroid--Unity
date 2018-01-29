@@ -17,11 +17,11 @@ public class SolidOnPassThrough : MonoBehaviour {
 
     private void OnTriggerExit(Collider other)
     {
-        if(other.gameObject.transform.position.y > this.transform.position.y)
+        if(other.gameObject.transform.position.y > this.transform.position.y && other.gameObject.layer == 8)
         {
             GetComponent<BoxCollider>().isTrigger = false;
-            other.gameObject.GetComponent<Rigidbody>().velocity = Vector3.zero;
-            GetComponent<SpriteRenderer>().color = Color.yellow;
+            //other.gameObject.GetComponent<Rigidbody>().velocity = Vector3.zero;
+            //GetComponent<SpriteRenderer>().color = Color.yellow;
             //GetComponent<BoxCollider>().isTrigger = true;
             //StartCoroutine(MakeSolid());
         }
@@ -29,11 +29,11 @@ public class SolidOnPassThrough : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.transform.position.y > this.transform.position.y)
+        if (other.gameObject.transform.position.y > this.transform.position.y && other.gameObject.layer == 8)
         {
             GetComponent<BoxCollider>().isTrigger = false;
-            other.gameObject.GetComponent<Rigidbody>().velocity = Vector3.zero;
-            GetComponent<SpriteRenderer>().color = Color.yellow;
+            //other.gameObject.GetComponent<Rigidbody>().velocity = Vector3.zero;
+            //GetComponent<SpriteRenderer>().color = Color.yellow;
             //GetComponent<BoxCollider>().isTrigger = true;
             //StartCoroutine(MakeSolid());
         }
@@ -41,8 +41,8 @@ public class SolidOnPassThrough : MonoBehaviour {
 
     IEnumerator MakeSolid()
     {
-        Debug.Log("We did it");
-        yield return new WaitForSeconds(2.0f);
+        GetComponent<BoxCollider>().isTrigger = false;
+        yield return new WaitForSeconds(5.0f);
         GetComponent<BoxCollider>().isTrigger = true;
     }
 

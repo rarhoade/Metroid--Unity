@@ -95,8 +95,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 669aacd3d2d192f4e8ffcad753a6d791, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  myDamage: 8
-  knockback: 10
+  myDamage: 0
+  knockback: 0
   lateralKnockback: 0
 --- !u!136 &136285159248608860
 CapsuleCollider:

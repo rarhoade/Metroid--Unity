@@ -153,6 +153,7 @@ public class PlayerJump : MonoBehaviour {
         playerSprite.animTime = baseAnimTime;
         Vector3 newVel = rigid.velocity;
         newVel.y = (maxChargeJumpPower - jumpPower) * proportion + jumpPower;
+        rigid.velocity = newVel;
         StartCoroutine(SetStillJumped());
         yield break;
     }
