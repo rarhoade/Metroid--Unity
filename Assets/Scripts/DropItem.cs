@@ -23,7 +23,7 @@ public class DropItem : MonoBehaviour {
         hasMissles = playerState.IsMissleOn();
 	}
 
-    public void dropItem()
+    public GameObject dropItem()
     {
         float rand = Random.value;
         Debug.Log(rand);
@@ -31,12 +31,13 @@ public class DropItem : MonoBehaviour {
         {
             if (hasMissles && rand < missleProbability * probability)
             {
-                Instantiate(missleDrop, this.transform.position, Quaternion.identity);
+                return Instantiate(missleDrop, this.transform.position, Quaternion.identity);
             }
             else
             {
-                Instantiate(energyDrop, this.transform.position, Quaternion.identity);
+                return Instantiate(energyDrop, this.transform.position, Quaternion.identity);
             }
         }
+        return null;
     }
 }

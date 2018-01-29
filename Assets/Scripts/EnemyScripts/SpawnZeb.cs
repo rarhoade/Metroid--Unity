@@ -36,4 +36,9 @@ public class SpawnZeb : MonoBehaviour {
         else
             Debug.Log("Nothing has been detected");
     }
+
+    public void setSpawnedZebItem(GameObject o)
+    {
+        spawnedZeb = o;
+    }
 }

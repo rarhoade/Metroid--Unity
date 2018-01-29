@@ -113,7 +113,12 @@ public class UnitHealth : MonoBehaviour {
                 if (isEnemy)
                 {
                     Debug.Log("drop is being called");
-                    GetComponent<DropItem>().dropItem();
+                    GameObject g = GetComponent<DropItem>().dropItem();
+                    ZebSpawnerRef z = GetComponent<ZebSpawnerRef>();
+                    if (z != null)
+                    {
+                        z.zebSpawner.setSpawnedZebItem(g);
+                    }
                 }
                 else
                 {
