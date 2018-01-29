@@ -22,6 +22,14 @@ public class DestroyOnCollisionEnter : MonoBehaviour {
         }
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if((other.gameObject.layer == 0) && GetComponent<SkreeMovement>().getHasFallen())
+        {
+            StartCoroutine(WaitAndDestroy());
+        }
+    }
+
     IEnumerator WaitAndDestroy()
     {
         rigid.velocity = Vector3.zero;
