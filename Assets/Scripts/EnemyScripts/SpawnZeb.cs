@@ -31,6 +31,7 @@ public class SpawnZeb : MonoBehaviour {
             {
                 spawnedZeb = GameObject.Instantiate(anObject);
                 spawnedZeb.transform.position = this.transform.position +  zebSpawnOffset;
+                spawnedZeb.GetComponent<ZebSpawnerRef>().SetSpawner(this);
             }
         }
         //else
